@@ -1,0 +1,48 @@
+{
+    "test": {
+        "get-funded": {
+            "product": "prod_PGPx2WXw0zgDR7",
+            "plans": [
+                {
+                    "80k": "price_1ORt7EAn1xoZ5dqVESFc8msu",
+                    "60k": "price_1ORt7EAn1xoZ5dqV59k71cds",
+                    "40k": "price_1ORt7EAn1xoZ5dqV0Pu7paIf",
+                    "20k": "price_1ORt7EAn1xoZ5dqVmnjznDue"
+                }
+            ]
+        },
+        "optimus-pro": {
+            "product": "prod_PGQ4z5kK4IscgQ",
+            "plans": [
+                {
+                    "premium": "price_1ORtFQAn1xoZ5dqVKY1IV4Xo",
+                    "standard": "price_1ORtEVAn1xoZ5dqVPIHrfeRi",
+                    "basic": "price_1ORtFlAn1xoZ5dqVxvMkRjLZ"
+                }
+            ]
+
+    },
+    "live": {
+        "get-funded": {
+            "product": "prod_PFfmhOSeoSwRhS",
+            "plans": [
+                {
+                    "80k": "price_1ORARKAn1xoZ5dqVhNUboNT1",
+                    "60k": "price_1ORARKAn1xoZ5dqVucwzrbYp",
+                    "40k": "price_1ORARKAn1xoZ5dqVWLJio7Bh",
+                    "20k": "price_1ORARKAn1xoZ5dqVF60iTk05"
+                }
+            ]
+        },
+        "optimus-pro": {
+            "product": "prod_PFfYXSkGpFZCvg",
+            "plans": [
+                {
+                    "premium": "price_1ORAFNAn1xoZ5dqVzsatAICB",
+                    "standard": "price_1ORAFNAn1xoZ5dqVvlyc8HGA",
+                    "basic": "price_1ORADoAn1xoZ5dqVDJ7QOxyq"
+                }
+            ]
+        }
+    }
+}
