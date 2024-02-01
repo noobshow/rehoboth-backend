@@ -1,0 +1,12 @@
+{
+  "resources/js/bootstrap.js": {
+    "file": "assets/bootstrap-KCfs22pF.js",
+    "isEntry": true,
+    "src": "resources/js/bootstrap.js"
+  },
+  "resources/js/events.js": {
+    "file": "assets/events-nUWSBQIc.js",
+    "isEntry": true,
+    "src": "resources/js/events.js"
+  }
+}
