@@ -90,6 +90,8 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
+        $user->sendEmailVerificationNotification();
+
         return response()->json([
             "status" => true,
             "redirect" => route("register.welcome")

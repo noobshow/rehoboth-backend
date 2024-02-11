@@ -78,11 +78,17 @@ Route::middleware('auth')->group(function () {
             // get Optimus Data
             $optimus_data = [];
             if ($is_valid_optimus_user) {
+                // is email verified?
+                if (!$user->hasVerifiedEmail()) {
+                    return redirect()->route('verification.notice');
+                }
+
                 $optimus_data = OptimusSignal::all();
                 // show EURUSD to non-subscribed users
                 // } else {
                 //     $optimus_data = OptimusSignal::where('asset', 'EURUSD')->get();
             }
+
             return view('optimus-pro', [
                 'optimus_data' => $optimus_data,
                 'funded_accounts' => $funded_accounts,
@@ -105,7 +111,12 @@ Route::middleware('auth')->group(function () {
 
             //get all actively(`active`) funded accounts
             $actively_funded = $funded_accounts->where('active', true)->get();
-            $is_actively_funded = $funded_accounts->where('active', true)->count() > 0;
+            $is_actively_funded = $actively_funded->count() > 0;
+
+            // is email verified?
+            if ($is_funded_account && !$user->hasVerifiedEmail()) {
+                return redirect()->route('verification.notice');
+            }
 
             return view('get-funded', [
                 'actively_funded' => $actively_funded,
@@ -132,32 +143,5 @@ Route::post('/update-trades-data', [OptimusSignalController::class, 'pushOptimus
 Route::post('/update-news-data', [OptimusSignalController::class, 'pushOptimusProNewsDatas']);
 Route::post('/update-cdl-data', [OptimusSignalController::class, 'pushOptimusProCDLSignals']);
 Route::post('/update-optimus-pro-data', [OptimusSignalController::class, 'pushOptimusProSignals']);
-
-Route::post('/post-register', [RegisteredUserController::class, 'apiStore'])->name('register.post');
-Route::post('/post-login', [AuthenticatedSessionController::class, 'apiStore'])->name('login.post');
-// // create a route that acts as a mailer
-// Route::post('/send-mail', function (Request $request) {
-//     $request->validate([
-//         'to' => ['required', 'email'],
-//         'subject' => ['required', 'string'],
-//         'message' => ['required', 'string'],
-//     ]);
-//     $to = $request->input('to');
-//     $subject = $request->input('subject');
-//     $message = $request->input('message');
-//     $headers = "From: " . config('mail.from.address') . "\r\n";
-//     $headers .= "Reply-To: " . config('mail.from.address') . "\r\n";
-//     $headers .= "CC: " . config('mail.from.address') . "\r\n";
-//     $headers .= "MIME-Version: 1.0\r\n";
-//     $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-//     Mail::raw($message, function ($message) use ($to, $subject, $headers) {
-//         $message->to($to)
-//             ->subject($subject)
-//             ->setBody($headers);
-//     });
-//     return response()->json([
-//         'message' => 'Email sent successfully'
-//     ]);
-// })->name('send-mail');
 
 require __DIR__ . '/auth.php';

@@ -20,3 +20,7 @@ yarn-error.log
 views.old/**
 resources/views/unused/**
 resources/media/**
+resources/css/**
+resources/js/**
+resources/sass/**
+resources/plugins/**

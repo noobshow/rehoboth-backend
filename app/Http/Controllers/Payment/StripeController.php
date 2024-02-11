@@ -47,6 +47,8 @@ class StripeController extends Controller
                     $amount = (int)preg_replace("/[^0-9]/", "", $plan->title);
                     $amount = $amount * 1000;
 
+                    // Send notification to user
+                    $user->notify(new \App\Notifications\GetFundedRequest($amount, $invoice->asStripeInvoice()->total / 100));
                     // Create inactive funded account
                     FundedAccount::create([
                         'active' => false,
@@ -60,6 +62,25 @@ class StripeController extends Controller
                 } else {
                     // Create subscription
                     $user->newSubscription('default', $plan->stripe_id)->create($request->token);
+
+                    // Convert Plan title to timeframe
+                    $timeframe = str_replace('OptimusPro ', '', $plan->title);
+                    // Convert Timeframe to days or months
+                    if($timeframe == 'Weekly') {
+                        $timeframe = '7 days';
+                    } else if($timeframe == 'Monthly') {
+                        $timeframe = '1 month';
+                    } else if($timeframe == 'Bi-Annually') {
+                        $timeframe = '6 months';
+                    }
+
+                    // Get amount using Stripe Plan ID
+                    \Stripe\Stripe::setApiKey(config('cashier.secret'));
+                    $amount = \Stripe\Plan::retrieve($plan->stripe_id)->amount;
+                    $amount = $amount / 100;
+
+                    // Send notification to user
+                    $user->notify(new \App\Notifications\PurchasedOptimusPro($timeframe, $amount));
                 }
                 // , [
                 //     'email' => $user->email
