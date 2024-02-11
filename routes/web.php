@@ -84,10 +84,10 @@ Route::middleware('auth')->group(function () {
                 }
 
                 $optimus_data = OptimusSignal::all();
-                // show EURUSD to non-subscribed users
-                // } else {
-                //     $optimus_data = OptimusSignal::where('asset', 'EURUSD')->get();
             }
+            // show EURUSD to non-subscribed users
+            // } else {
+            //     $optimus_data = OptimusSignal::where('asset', 'EURUSD')->get();
 
             return view('optimus-pro', [
                 'optimus_data' => $optimus_data,
