@@ -77,9 +77,9 @@ Route::middleware('auth')->group(function () {
             $is_valid_optimus_user = $is_valid_optimus_user || $is_funded_account || $user->role == 'admin';
             // get Optimus Data
             $optimus_data = [];
-            if ($is_valid_optimus_user && $user->role != 'admin') {
+            if ($is_valid_optimus_user) {
                 // is email verified?
-                if (!$user->hasVerifiedEmail()) {
+                if (!$user->hasVerifiedEmail() && $user->role != 'admin') {
                     return redirect()->route('verification.notice');
                 }
 
