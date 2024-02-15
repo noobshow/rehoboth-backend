@@ -1,0 +1,8 @@
+{
+    "debug": true,
+    "port": 6001,
+    "ssl": {
+        "certPath": "/home/rehobjct/ssl/certs/_wildcard__rehobothtraders_com_e3154_7152d_1715593758_73f208f1f808b01e7d6c0365525b5dd8.crt",
+        "keyPath": "/home/rehobjct/ssl/keys/e3154_7152d_74e13ef64497b0a1e291c9d7e20a7d12.key"
+    }
+}
