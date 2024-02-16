@@ -30,6 +30,9 @@ use Laravel\Cashier\Cashier;
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/php--info', function () {
+    phpinfo();
+});
 Route::middleware('auth')->group(function () {
     Route::get('/', function () {
         $user = auth()->user();
