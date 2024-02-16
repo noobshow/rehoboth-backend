@@ -29,6 +29,9 @@ return [
     */
 
     'connections' => [
+        'pusher-custom' => [
+            'driver' => 'pusher-custom'
+        ],
         'pusher' => [
             'driver' => 'pusher',
             'key' => env('PUSHER_APP_KEY', 'app-key'),
