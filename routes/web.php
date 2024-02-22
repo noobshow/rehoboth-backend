@@ -5,15 +5,13 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Signal\OptimusSignalController;
 use App\Http\Controllers\Payment\StripeController;
 use App\Models\CDLSignal;
+use App\Models\FundedAccount;
 use App\Models\NewsData;
 use App\Models\OptimusData;
 use App\Models\OptimusSignal;
 use App\Models\TradeBlotter;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
-use Laravel\Cashier\Cashier;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

@@ -24,3 +24,4 @@ resources/css/**
 resources/js/**
 resources/sass/**
 resources/plugins/**
+*.zip
