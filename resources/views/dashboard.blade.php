@@ -126,7 +126,6 @@
 										<div class="menu-item px-5">
 											<form method="POST" action="{{ route('logout') }}">
 												@csrf
-
 												<a href="{{ route('logout') }}" onclick="event.preventDefault(); 
 														this.closest('form').submit();" class="menu-link px-5">Sign Out</a>
 											</form>
@@ -235,7 +234,7 @@
 								<!--begin::Row-->
 								<div class="row gx-5 gx-xl-8 mb-5 mb-xl-8">
 									<!--begin::Col-->
-									<div class="col-xxl-6">
+									<div><!-- TODO  class="col-xxl-6" -->
 										<!--begin::Tiles Widget 2-->
 										<div class="card h-175px bgi-no-repeat bgi-size-cover card-xxl-stretch mb-5 mb-xl-8" style="background-color: #663259; background-position: calc(100% + 0.5rem) 100%;background-size: 100% auto;background-image:url('assets/media/svg/misc/taieri.svg')">
 											<!--begin::Body-->
@@ -319,48 +318,6 @@
 										</div>
 									</div>
 									<!--end::Col-->
-									<!--begin::Col-->
-									<div class="col-xxl-6">
-										<!--begin::Mixed Widget 3-->
-										<div class="card bg-body border border-primary border-dotted h-100 bgi-no-repeat bgi-size-cover card-xxl-stretch mb-5 mb-xl-8">
-											<!--begin::Body-->
-											<div class="card-body pt-5 mb-xl-9 position-relative">
-												<!--begin::Heading-->
-												<div class="d-flex flex-stack">
-													<!--begin::Title-->
-													<h4 class="fw-bolder text-gray-800 m-0">Get Funded</h4>
-													<!--end::Title-->
-												</div>
-												<!--end::Heading-->
-												<!--begin::Chart-->
-												<div class="d-flex flex-center mb-5 mb-xxl-0">
-													<div id="get_funded_upto_chart" style="height: 260px"></div>
-												</div>
-												<!--end::Chart-->
-												<!--begin::Content-->
-												<div class="text-center position-absolute bottom-0 start-50 translate-middle-x w-100 mb-10">
-													<!--begin::Text-->
-													<p class="fw-bold fs-4 text-gray-400 mb-7 px-5">Let's take over your risk, so you
-														<br />worry less and trade better
-													</p>
-													<!--end::Text-->
-													<!--begin::Action-->
-													<div class="m-0">
-														@if ($is_funded_account)
-														<a href="{{ route('get-funded') }}" class="btn btn-success fw-bold">Get Funded</a>
-														@else
-														<a href="#" class="btn btn-success fw-bold" data-bs-toggle="modal" data-bs-target="#get_funded_modal">Get Funded</a>
-														@endif
-													</div>
-													<!--ed::Action-->
-												</div>
-												<!--end::Content-->
-											</div>
-											<!--end::Body-->
-										</div>
-										<!--end::Mixed Widget 3-->
-									</div>
-									<!--end::Col-->
 								</div>
 								<!--end::Row-->
 							</div>
@@ -417,7 +374,7 @@
 												<table class="table align-middle"><!-- gs-0 gy-4 -->
 													<!--begin::Table head-->
 													<thead>
-														<tr class="fw-bolder text-muted bg-light">
+														<tr class="fw-bolder bg-light-success">
 															<th class="fs-7 fw-bolder">Assets</th>
 															<th class="fs-7 fw-bolder">Time</th>
 															<th class="fs-7 fw-bolder">Size</th>
@@ -529,8 +486,8 @@
 														<table class="table align-middle"><!-- gs-0 gy-4 -->
 															<!--begin::Table head-->
 															<thead>
-																<tr class="fw-bolder text-muted bg-light">
-																	<th class="ps-4 text-center">Candle Analysis</th>
+																<tr class="fw-bolder bg-light-success">
+																	<th class="ps-4 text-center">Daily Candle Analysis</th>
 																</tr>
 															</thead>
 															<!--end::Table head-->
@@ -614,8 +571,8 @@
 														<table class="table align-middle"><!-- gs-0 gy-4 -->
 															<!--begin::Table head-->
 															<thead>
-																<tr class="fw-bolder text-muted bg-light">
-																	<th class="ps-4 text-center">Investor's Position</th>
+																<tr class="fw-bolder bg-light-success">
+																	<th class="ps-4 text-center">Investor's Bias</th>
 																</tr>
 															</thead>
 															<!--end::Table head-->
