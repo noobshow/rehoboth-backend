@@ -92,7 +92,7 @@
 													<div class="fw-bolder d-flex align-items-center fs-5">{{ Auth::user()->name }}
 														<span class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2">Pro</span>
 													</div>
-													<a href="#" class="fw-bold text-muted text-hover-primary fs-7">{{ Auth::user()->email }}</a>
+													<a href="javascript:void(0)" class="fw-bold text-muted text-hover-primary fs-7">{{ Auth::user()->email }}</a>
 												</div>
 												<!--end::Username-->
 											</div>
@@ -103,19 +103,18 @@
 										<!--end::Menu separator-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-5">
-											<a href="#" class="menu-link px-5">My Profile</a>
+											<a href="javascript:void(0)" class="menu-link px-5">My Profile</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-5 my-1">
-											<a href="#" class="menu-link px-5">Account Billing</a>
+											<a href="javascript:void(0)" class="menu-link px-5">Account Billing</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-5">
 											<form method="POST" action="{{ route('logout') }}">
 												@csrf
-
 												<a href="{{ route('logout') }}" onclick="event.preventDefault(); 
 														this.closest('form').submit();" class="menu-link px-5">Sign Out</a>
 											</form>
@@ -209,7 +208,7 @@
 								<!--begin::Wrapper-->
 								<div class="me-3">
 									<!--begin::Menu-->
-									<a href="#" class="btn btn-light-primary fw-bolder disabled" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+								<a href="javascript:void(0)" class="btn btn-light-primary fw-bolder disabled" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
                                         <!--begin::Svg Icon | path: icons/duotune/general/gen031.svg-->
                                         <span class="svg-icon svg-icon-5 svg-icon-gray-500 me-1">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -226,7 +225,7 @@
 								</div>
 								<!--end::Wrapper-->
 								<!--begin::Button-->
-								<a href="#" class="btn btn-primary fw-bolder disabled" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app" id="kt_toolbar_primary_button">Extend</a>
+							<a href="javascript:void(0)" class="btn btn-primary fw-bolder disabled" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app" id="kt_toolbar_primary_button">Extend</a>
 								<!--end::Button-->
 							</div>
 							<!--end::Actions-->
@@ -252,26 +251,15 @@
                                             </h3>
                                             <div class="card-toolbar">
                                                 <!--begin::Menu-->
-                                                <button type="button" class="btn btn-sm btn-icon disabled btn-color-primary btn-active-light-primary"
-                                                    data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+											<button type="button" class="btn btn-sm btn-icon disabled btn-color-primary btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
                                                     <!--begin::Svg Icon | path: icons/duotune/general/gen024.svg-->
                                                     <span class="svg-icon svg-icon-2">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
-                                                            viewBox="0 0 24 24">
-                                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
-                                                                data-darkreader-inline-stroke="" style="--darkreader-inline-stroke: none;">
-                                                                <rect x="5" y="5" width="5" height="5" rx="1" fill="#000000"
-                                                                    data-darkreader-inline-fill=""
-                                                                    style="--darkreader-inline-fill: #e8e6e3;"></rect>
-                                                                <rect x="14" y="5" width="5" height="5" rx="1" fill="#000000" opacity="0.3"
-                                                                    data-darkreader-inline-fill=""
-                                                                    style="--darkreader-inline-fill: #e8e6e3;"></rect>
-                                                                <rect x="5" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3"
-                                                                    data-darkreader-inline-fill=""
-                                                                    style="--darkreader-inline-fill: #e8e6e3;"></rect>
-                                                                <rect x="14" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3"
-                                                                    data-darkreader-inline-fill=""
-                                                                    style="--darkreader-inline-fill: #e8e6e3;"></rect>
+													<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
+														<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke: none;">
+															<rect x="5" y="5" width="5" height="5" rx="1" fill="#000000" data-darkreader-inline-fill="" style="--darkreader-inline-fill: #e8e6e3;"></rect>
+															<rect x="14" y="5" width="5" height="5" rx="1" fill="#000000" opacity="0.3" data-darkreader-inline-fill="" style="--darkreader-inline-fill: #e8e6e3;"></rect>
+															<rect x="5" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" data-darkreader-inline-fill="" style="--darkreader-inline-fill: #e8e6e3;"></rect>
+															<rect x="14" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" data-darkreader-inline-fill="" style="--darkreader-inline-fill: #e8e6e3;"></rect>
                                                             </g>
                                                         </svg>
                                                     </span>
@@ -292,23 +280,22 @@
                                                 <table class="table align-middle"><!-- gs-0 gy-4 -->
                                                     <!--begin::Table head-->
                                                     <thead>
-                                                        <tr class="fw-bolder text-muted bg-light">
+													<tr class="fw-bolder text-muted bg-light text-center">
                                                             <th class="ps-4  rounded-start">Level</th>
 															<th class="min-w-125px">Account Type</th>
-															<!-- 'mt5_login', mt5_server', mt5_password', funded_amount', -->
 															<th class="min-w-125px">MT5 Login</th>
 															<th class="min-w-125px">MT5 Server</th>
-															<!-- <th class="min-w-125px">MT5 Password</th> -->
+														<th class="min-w-125px">MT5 Password</th>
 															<th class="min-w-125px">Funded Amount</th>
 															<th class="min-w-125px">Status</th>
-															<th class="min-w-125px">Action</th>
+														<!-- <th class="min-w-125px">Actions</th> -->
                                                         </tr>
                                                     </thead>
                                                     <!--end::Table head-->
                                                     <!--begin::Table body-->
                                                     <tbody>
 														@foreach($actively_funded as $active_account)
-                                                        <tr>
+													<tr class="text-center">
                                                             <td>
                                                                 <div class="d-flex flex-column w-100 me-2">
 																	<div class="d-flex flex-stack mb-2">
@@ -317,31 +304,52 @@
 																</div>
                                                             </td>
                                                             <td>
-                                                                <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">Instant Funding</a>
+															<a href="javascript:void(0)" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">Instant Funding</a>
                                                             </td>
                                                             <td>
-                                                                <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{ $active_account->mt5_login }}</a>
+															<a href="javascript:void(0)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 actively-funded-account text-dark fw-bolder text-hover-primary mb-1 fs-6 text-nowrap" data-clipboard-text="{{ $active_account->mt5_login }}">
+																{{ $active_account->mt5_login }}
+																<!--begin::Svg Icon | path: assets/media/icons/duotune/general/gen054.svg-->
+																<span class="svg-icon svg-icon-muted svg-icon-2x">
+																	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																		<path opacity="0.5" d="M18 2H9C7.34315 2 6 3.34315 6 5H8C8 4.44772 8.44772 4 9 4H18C18.5523 4 19 4.44772 19 5V16C19 16.5523 18.5523 17 18 17V19C19.6569 19 21 17.6569 21 16V5C21 3.34315 19.6569 2 18 2Z" fill="black"></path>
+																		<path fill-rule="evenodd" clip-rule="evenodd" d="M14.7857 7.125H6.21429C5.62255 7.125 5.14286 7.6007 5.14286 8.1875V18.8125C5.14286 19.3993 5.62255 19.875 6.21429 19.875H14.7857C15.3774 19.875 15.8571 19.3993 15.8571 18.8125V8.1875C15.8571 7.6007 15.3774 7.125 14.7857 7.125ZM6.21429 5C4.43908 5 3 6.42709 3 8.1875V18.8125C3 20.5729 4.43909 22 6.21429 22H14.7857C16.5609 22 18 20.5729 18 18.8125V8.1875C18 6.42709 16.5609 5 14.7857 5H6.21429Z" fill="black"></path>
+																	</svg>
+																</span>
+																<!--end::Svg Icon-->
+															</a>
                                                             </td>
                                                             <td>
-                                                                <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{ $active_account->mt5_server }}</a>
+															<a href="javascript:void(0)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 actively-funded-account text-dark fw-bolder text-hover-primary mb-1 fs-6 text-nowrap" data-clipboard-text="{{ $active_account->mt5_server }}">
+																{{ $active_account->mt5_server }}
+																<!--begin::Svg Icon | path: assets/media/icons/duotune/general/gen054.svg-->
+																<span class="svg-icon svg-icon-muted svg-icon-2x">
+																	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																		<path opacity="0.5" d="M18 2H9C7.34315 2 6 3.34315 6 5H8C8 4.44772 8.44772 4 9 4H18C18.5523 4 19 4.44772 19 5V16C19 16.5523 18.5523 17 18 17V19C19.6569 19 21 17.6569 21 16V5C21 3.34315 19.6569 2 18 2Z" fill="black"></path>
+																		<path fill-rule="evenodd" clip-rule="evenodd" d="M14.7857 7.125H6.21429C5.62255 7.125 5.14286 7.6007 5.14286 8.1875V18.8125C5.14286 19.3993 5.62255 19.875 6.21429 19.875H14.7857C15.3774 19.875 15.8571 19.3993 15.8571 18.8125V8.1875C15.8571 7.6007 15.3774 7.125 14.7857 7.125ZM6.21429 5C4.43908 5 3 6.42709 3 8.1875V18.8125C3 20.5729 4.43909 22 6.21429 22H14.7857C16.5609 22 18 20.5729 18 18.8125V8.1875C18 6.42709 16.5609 5 14.7857 5H6.21429Z" fill="black"></path>
+																	</svg>
+																</span>
+																<!--end::Svg Icon-->
+															</a>
                                                             </td>
                                                             <td>
-                                                                <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">${{ number_format($active_account->funded_amount) }}</a>
-                                                            </td>
-                                                            <td>
-                                                                <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">Active - Evaluation</a>
-                                                            </td>
-                                                            <td>
-																<a href="javacript:void(0)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 actively-funded-account"  data-clipboard-text="Login: {{ $active_account->mt5_login }} Password: {{ $active_account->mt5_password }} Server: {{ $active_account->mt5_server }}">  
+															<a href="javascript:void(0)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 actively-funded-account text-dark fw-bolder text-hover-primary mb-1 fs-6 text-nowrap" data-clipboard-text="{{ $active_account->mt5_password }}">
+																{{ str_repeat('*', strlen($active_account->mt5_password)) }}
 																	<!--begin::Svg Icon | path: assets/media/icons/duotune/general/gen054.svg-->
-																	<span class="svg-icon svg-icon-muted svg-icon-2hx">
+																<span class="svg-icon svg-icon-muted svg-icon-2x">
 																		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																			<path opacity="0.5" d="M18 2H9C7.34315 2 6 3.34315 6 5H8C8 4.44772 8.44772 4 9 4H18C18.5523 4 19 4.44772 19 5V16C19 16.5523 18.5523 17 18 17V19C19.6569 19 21 17.6569 21 16V5C21 3.34315 19.6569 2 18 2Z" fill="black"/>
-																			<path fill-rule="evenodd" clip-rule="evenodd" d="M14.7857 7.125H6.21429C5.62255 7.125 5.14286 7.6007 5.14286 8.1875V18.8125C5.14286 19.3993 5.62255 19.875 6.21429 19.875H14.7857C15.3774 19.875 15.8571 19.3993 15.8571 18.8125V8.1875C15.8571 7.6007 15.3774 7.125 14.7857 7.125ZM6.21429 5C4.43908 5 3 6.42709 3 8.1875V18.8125C3 20.5729 4.43909 22 6.21429 22H14.7857C16.5609 22 18 20.5729 18 18.8125V8.1875C18 6.42709 16.5609 5 14.7857 5H6.21429Z" fill="black"/>
+																		<path opacity="0.5" d="M18 2H9C7.34315 2 6 3.34315 6 5H8C8 4.44772 8.44772 4 9 4H18C18.5523 4 19 4.44772 19 5V16C19 16.5523 18.5523 17 18 17V19C19.6569 19 21 17.6569 21 16V5C21 3.34315 19.6569 2 18 2Z" fill="black"></path>
+																		<path fill-rule="evenodd" clip-rule="evenodd" d="M14.7857 7.125H6.21429C5.62255 7.125 5.14286 7.6007 5.14286 8.1875V18.8125C5.14286 19.3993 5.62255 19.875 6.21429 19.875H14.7857C15.3774 19.875 15.8571 19.3993 15.8571 18.8125V8.1875C15.8571 7.6007 15.3774 7.125 14.7857 7.125ZM6.21429 5C4.43908 5 3 6.42709 3 8.1875V18.8125C3 20.5729 4.43909 22 6.21429 22H14.7857C16.5609 22 18 20.5729 18 18.8125V8.1875C18 6.42709 16.5609 5 14.7857 5H6.21429Z" fill="black"></path>
 																		</svg>
 																	</span>
 																	<!--end::Svg Icon-->
 																</a>
+														</td>
+														<td>
+															<a href="javascript:void(0)" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">${{ number_format($active_account->funded_amount) }}</a>
+														</td>
+														<td>
+															<a href="javascript:void(0)" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6 text-nowrap">Active - Evaluation</a>
                                                             </td>
                                                         </tr>
 														@endforeach
@@ -406,7 +414,7 @@
 											@if ($is_funded_account)
 											<a href="{{ route('get-funded') }}" class="btn btn-success fw-bold">Get Funded</a>
 											@else
-											<a href="#" class="btn btn-success fw-bold" data-bs-toggle="modal" data-bs-target="#get_funded_modal">Get Funded</a>
+										<a href="javascript:void(0)" class="btn btn-success fw-bold" data-bs-toggle="modal" data-bs-target="#get_funded_modal">Get Funded</a>
 											@endif
 										</div>
 										<!--ed::Action-->
@@ -460,7 +468,7 @@
 					<div class="card-title">
 						<!--begin::User-->
 						<div class="d-flex justify-content-center flex-column me-3">
-							<a href="#" class="fs-4 fw-bolder text-gray-900 text-hover-primary me-1 mb-2 lh-1">Trade room chat</a>
+						<a href="javascript:void(0)" class="fs-4 fw-bolder text-gray-900 text-hover-primary me-1 mb-2 lh-1">Trade room chat</a>
 							<!--begin::Info-->
 							<div class="mb-0 lh-1">
 								<span class="badge badge-success badge-circle w-10px h-10px me-1"></span>
@@ -501,7 +509,7 @@
 								<div class="d-flex align-items-center mb-2">
 									<!--begin::Details-->
 									<div class="ms-3">
-										<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian Cox</a>
+									<a href="javascript:void(0)" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian Cox</a>
 										<span class="text-muted fs-7 mb-1">2 mins</span>
 									</div>
 									<!--end::Details-->
@@ -523,7 +531,7 @@
 									<!--begin::Details-->
 									<div class="me-3">
 										<span class="text-muted fs-7 mb-1">5 mins</span>
-										<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
+									<a href="javascript:void(0)" class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
 									</div>
 									<!--end::Details-->
 								</div>
@@ -543,7 +551,7 @@
 								<div class="d-flex align-items-center mb-2">
 									<!--begin::Details-->
 									<div class="ms-3">
-										<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian Cox</a>
+									<a href="javascript:void(0)" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian Cox</a>
 										<span class="text-muted fs-7 mb-1">1 Hour</span>
 									</div>
 									<!--end::Details-->
@@ -565,7 +573,7 @@
 									<!--begin::Details-->
 									<div class="me-3">
 										<span class="text-muted fs-7 mb-1">2 Hours</span>
-										<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
+									<a href="javascript:void(0)" class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
 									</div>
 									<!--end::Details-->
 								</div>
@@ -585,7 +593,7 @@
 								<div class="d-flex align-items-center mb-2">
 									<!--begin::Details-->
 									<div class="ms-3">
-										<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian Cox</a>
+									<a href="javascript:void(0)" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian Cox</a>
 										<span class="text-muted fs-7 mb-1">3 Hours</span>
 									</div>
 									<!--end::Details-->
@@ -593,7 +601,8 @@
 								<!--end::User-->
 								<!--begin::Text-->
 								<div class="p-5 rounded bg-light-info text-dark fw-bold mw-lg-400px text-start" data-kt-element="message-text">You can unwatch this repository immediately by clicking here:
-								<a href="https://keenthemes.com">Keenthemes.com</a></div>
+								<a href="https://keenthemes.com">Keenthemes.com</a>
+							</div>
 								<!--end::Text-->
 							</div>
 							<!--end::Wrapper-->
@@ -608,7 +617,7 @@
 									<!--begin::Details-->
 									<div class="me-3">
 										<span class="text-muted fs-7 mb-1">4 Hours</span>
-										<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
+									<a href="javascript:void(0)" class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
 									</div>
 									<!--end::Details-->
 								</div>
@@ -628,7 +637,7 @@
 								<div class="d-flex align-items-center mb-2">
 									<!--begin::Details-->
 									<div class="ms-3">
-										<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian Cox</a>
+									<a href="javascript:void(0)" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian Cox</a>
 										<span class="text-muted fs-7 mb-1">5 Hours</span>
 									</div>
 									<!--end::Details-->
@@ -650,7 +659,7 @@
 									<!--begin::Details-->
 									<div class="me-3">
 										<span class="text-muted fs-7 mb-1">Just now</span>
-										<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
+									<a href="javascript:void(0)" class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
 									</div>
 									<!--end::Details-->
 								</div>
@@ -670,7 +679,7 @@
 								<div class="d-flex align-items-center mb-2">
 									<!--begin::Details-->
 									<div class="ms-3">
-										<a href="#" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian Cox</a>
+									<a href="javascript:void(0)" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian Cox</a>
 										<span class="text-muted fs-7 mb-1">Just now</span>
 									</div>
 									<!--end::Details-->
@@ -1830,7 +1839,7 @@
 											<!--end::Title-->
 											<!--begin::Notice-->
 											<div class="text-muted fw-bold fs-6">If you need more info, please check out
-												<a href="#" class="text-primary fw-bolder">Help Page</a>.
+											<a href="javascript:void(0)" class="text-primary fw-bolder">Help Page</a>.
 											</div>
 											<!--end::Notice-->
 										</div>
@@ -2013,7 +2022,9 @@
 		</div>
 		<!--end::Scrolltop-->
 		<!--end::Main-->
-		<script>var hostUrl = "assets/";</script>
+	<script>
+		var hostUrl = "assets/";
+	</script>
 		<!--begin::Javascript-->
 		<!--begin::Global Javascript Bundle(used by all pages)-->
 		<script src="assets/plugins/global/plugins.bundle.js"></script>
@@ -2064,4 +2075,5 @@
 		<!--end::Javascript-->
 	</body>
 	<!--end::Body-->
+
 </html>
