@@ -332,7 +332,7 @@
                                                                 <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">Active - Evaluation</a>
                                                             </td>
                                                             <td>
-																<a href="javacript:void(0)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 actively-funded-account"  data-clipoard-text="Login: {{ $active_account->mt5_login }} Password: {{ $active_account->mt5_password }} Server: {{ $active_account->mt5_server }}">  
+																<a href="javacript:void(0)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 actively-funded-account"  data-clipboard-text="Login: {{ $active_account->mt5_login }} Password: {{ $active_account->mt5_password }} Server: {{ $active_account->mt5_server }}">  
 																	<!--begin::Svg Icon | path: assets/media/icons/duotune/general/gen054.svg-->
 																	<span class="svg-icon svg-icon-muted svg-icon-2hx">
 																		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
