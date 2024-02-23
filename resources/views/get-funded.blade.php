@@ -297,11 +297,7 @@
 														@foreach($actively_funded as $active_account)
 													<tr class="text-center">
                                                             <td>
-                                                                <div class="d-flex flex-column w-100 me-2">
-																	<div class="d-flex flex-stack mb-2">
                                                                         <span class="badge badge-secondary fw-bolder fs-6">Level {{ $active_account->level }}</span>
-																	</div>
-																</div>
                                                             </td>
                                                             <td>
 															<a href="javascript:void(0)" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">Instant Funding</a>
