@@ -40264,13 +40264,13 @@ code:not([class*=language-]) {
   border-radius: 0.475rem;
 }
 
-.table {
+.table:not(.table-bordered) {
   width: 100%;
 }
-.table > :not(:last-child) > :last-child > * {
+.table:not(.table-bordered) > :not(:last-child) > :last-child > * {
   border-bottom-color: inherit;
 }
-.table tr, .table th, .table td {
+.table:not(.table-bordered) tr, .table:not(.table-bordered) th, .table:not(.table-bordered) td {
   border-color: inherit;
   border-width: inherit;
   border-style: inherit;
@@ -40281,73 +40281,73 @@ code:not([class*=language-]) {
   height: inherit;
   min-height: inherit;
 }
-.table tr:first-child, .table th:first-child, .table td:first-child {
+.table:not(.table-bordered) tr:first-child, .table:not(.table-bordered) th:first-child, .table:not(.table-bordered) td:first-child {
   padding-left: 0;
 }
-.table tr:last-child, .table th:last-child, .table td:last-child {
+.table:not(.table-bordered) tr:last-child, .table:not(.table-bordered) th:last-child, .table:not(.table-bordered) td:last-child {
   padding-right: 0;
 }
-.table tfoot tr:last-child,
-.table tbody tr:last-child {
+.table:not(.table-bordered) tfoot tr:last-child,
+.table:not(.table-bordered) tbody tr:last-child {
   border-bottom: 0 !important;
 }
-.table tfoot tr:last-child th, .table tfoot tr:last-child td,
-.table tbody tr:last-child th,
-.table tbody tr:last-child td {
+.table:not(.table-bordered) tfoot tr:last-child th, .table:not(.table-bordered) tfoot tr:last-child td,
+.table:not(.table-bordered) tbody tr:last-child th,
+.table:not(.table-bordered) tbody tr:last-child td {
   border-bottom: 0 !important;
 }
-.table tfoot th, .table tfoot td {
+.table:not(.table-bordered) tfoot th, .table:not(.table-bordered) tfoot td {
   border-top: inherit;
 }
-.table.table-rounded {
+.table:not(.table-bordered).table-rounded {
   border-radius: 0.475rem;
   border-spacing: 0;
   border-collapse: separate;
 }
-.table.table-flush tr, .table.table-flush th, .table.table-flush td {
+.table:not(.table-bordered).table-flush tr, .table:not(.table-bordered).table-flush th, .table:not(.table-bordered).table-flush td {
   padding: inherit;
 }
-.table.table-row-bordered tr {
+.table:not(.table-bordered).table-row-bordered tr {
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: #EFF2F5;
 }
-.table.table-row-bordered tfoot th, .table.table-row-bordered tfoot td {
+.table:not(.table-bordered).table-row-bordered tfoot th, .table:not(.table-bordered).table-row-bordered tfoot td {
   border-top-width: 1px !important;
 }
-.table.table-row-dashed tr {
+.table:not(.table-bordered).table-row-dashed tr {
   border-bottom-width: 1px;
   border-bottom-style: dashed;
   border-bottom-color: #EFF2F5;
 }
-.table.table-row-dashed tfoot th, .table.table-row-dashed tfoot td {
+.table:not(.table-bordered).table-row-dashed tfoot th, .table:not(.table-bordered).table-row-dashed tfoot td {
   border-top-width: 1px !important;
 }
-.table.table-row-gray-100 tr {
+.table:not(.table-bordered).table-row-gray-100 tr {
   border-bottom-color: #F5F8FA;
 }
-.table.table-row-gray-200 tr {
+.table:not(.table-bordered).table-row-gray-200 tr {
   border-bottom-color: #EFF2F5;
 }
-.table.table-row-gray-300 tr {
+.table:not(.table-bordered).table-row-gray-300 tr {
   border-bottom-color: #E4E6EF;
 }
-.table.table-row-gray-400 tr {
+.table:not(.table-bordered).table-row-gray-400 tr {
   border-bottom-color: #B5B5C3;
 }
-.table.table-row-gray-500 tr {
+.table:not(.table-bordered).table-row-gray-500 tr {
   border-bottom-color: #A1A5B7;
 }
-.table.table-row-gray-600 tr {
+.table:not(.table-bordered).table-row-gray-600 tr {
   border-bottom-color: #7E8299;
 }
-.table.table-row-gray-700 tr {
+.table:not(.table-bordered).table-row-gray-700 tr {
   border-bottom-color: #5E6278;
 }
-.table.table-row-gray-800 tr {
+.table:not(.table-bordered).table-row-gray-800 tr {
   border-bottom-color: #3F4254;
 }
-.table.table-row-gray-900 tr {
+.table:not(.table-bordered).table-row-gray-900 tr {
   border-bottom-color: #181C32;
 }
 

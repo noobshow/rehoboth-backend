@@ -285,7 +285,7 @@
 										<!--begin::Table container-->
 										<div class="table-responsive">
 											<!--begin::Table-->
-											<table id="zoomable-table" class="table align-middle"><!-- gs-0 gy-4 -->
+											<table id="zoomable-table" class="table table-bordered border-secondary table-rounded border align-middle text-center"><!-- gs-0 gy-4 -->
 												<!--begin::Table head-->
 												<thead>
 													<tr class="fw-bolder bg-light-success">

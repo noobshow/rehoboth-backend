@@ -280,7 +280,7 @@
                                                 <table class="table align-middle"><!-- gs-0 gy-4 -->
                                                     <!--begin::Table head-->
                                                     <thead>
-													<tr class="fw-bolder text-muted bg-light text-center">
+													<tr class="fw-bolder bg-light-success text-center">
                                                             <th class="ps-4  rounded-start">Level</th>
 															<th class="min-w-125px">Account Type</th>
 															<th class="min-w-125px">MT5 Login</th>
