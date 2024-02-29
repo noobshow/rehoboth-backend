@@ -134,9 +134,15 @@ Route::middleware('auth')->group(function () {
 
     // Payment routes
     Route::post('/stripe-charge', [StripeController::class, 'handlePayment'])->name('stripe.charge');
-});
 
-// Optimus Pro API routes
+    // Download routes
+    Route::get('/download', function (Request $request) {
+        $request->validate([
+            'name' => 'required|regex:/^[^\/]*$/',
+        ]);
+        return response()->download(storage_path('app/downloads/' . $request->name));
+    })->name('download');
+    
 Route::post('/update-trades-data', [OptimusSignalController::class, 'pushOptimusProTradeBlotters']);
 Route::post('/update-news-data', [OptimusSignalController::class, 'pushOptimusProNewsDatas']);
 Route::post('/update-cdl-data', [OptimusSignalController::class, 'pushOptimusProCDLSignals']);

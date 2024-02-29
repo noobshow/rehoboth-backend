@@ -181,7 +181,7 @@
 															<a href="javascript:void(0)" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6 text-nowrap">Active - Evaluation</a>
 														</td>
 														<td>
-															<button type="button"  data-bs-toggle="modal" data-bs-target="#downloads_modal" class="btn btn-sm btn-primary">Download</button>
+															<button type="button" data-bs-toggle="modal" data-bs-target="#downloads_modal" class="btn btn-sm btn-primary">Download</button>
 														</td>
 													</tr>
 													@endforeach
@@ -279,7 +279,7 @@
 				<!--begin::Modal header-->
 				<div class="modal-header">
 					<!--begin::Modal title-->
-					<h2>Platform Downloads</h2>
+					<h2>Downloads</h2>
 					<!--end::Modal title-->
 					<!--begin::Close-->
 					<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
@@ -296,7 +296,43 @@
 				</div>
 				<!--end::Modal header-->
 				<!--begin::Modal body-->
-				<div class="modal-body py-lg-10 px-lg-10">
+				<div class="modal-body">
+					<div class="card shadow-sm mb-4">
+						<div class="card-header">
+							<h3 class="card-title">Platforms</h3>
+
+						</div>
+						<div class="card-header border border-secondary rounded">
+							<h4 class="card-title">MetaTrader 5 for Windows</h4>
+							<div class="card-toolbar">
+								<a href="/download?name=windows-metatrader" type="button" class="btn btn-sm btn-dark">
+									Download
+								</a>
+							</div>
+						</div>
+						<div class="card-header border border-secondary rounded">
+							<h4 class="card-title">MetaTrader 5 for Mac OS</h4>
+							<div class="card-toolbar">
+								<a href="/download?name=mac-metatrader" type="button" class="btn btn-sm btn-dark">
+									Download
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="card shadow-sm">
+						<div class="card-header">
+							<h3 class="card-title">Expert Advisors</h3>
+
+						</div>
+						<div class="card-header border border-secondary rounded">
+							<h4 class="card-title">Risk Manager</h4>
+							<div class="card-toolbar">
+								<a href="/download?name=risk-manager" type="button" class="btn btn-sm btn-dark">
+									Download
+								</a>
+							</div>
+						</div>
+					</div>
 				</div>
 				<!--end::Modal body-->
 			</div>
