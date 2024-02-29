@@ -137,10 +137,21 @@ Route::middleware('auth')->group(function () {
 
     // Download routes
     Route::get('/download', function (Request $request) {
+        // require name to be one of 'windows-metatrader', 'mac-metatrader', 'risk-manager' 
         $request->validate([
-            'name' => 'required|regex:/^[^\/]*$/',
+            'name' => 'required|in:windows-metatrader,mac-metatrader,risk-manager',
         ]);
-        return response()->download('/downloads/' . $request->name);
+
+        $file_name = $request->name;
+        if ($file_name == 'risk-manager') {
+            return response()->download('/downloads/RehobothRiskTool5.03.ex5');
+        } else if ($file_name == 'mac-metatrader') {
+            return response()->download('/downloads/MT5 Client Terminal - MAC.dmg');
+        } else if ($file_name == 'windows-metatrader') {
+            return response()->download('/downloads/MT5 Client Terminal - Windows.exe');
+        }
+        // return 404 
+        abort(404, 'File not found');
     })->name('download');
     
 Route::post('/update-trades-data', [OptimusSignalController::class, 'pushOptimusProTradeBlotters']);
