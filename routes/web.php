@@ -144,11 +144,11 @@ Route::middleware('auth')->group(function () {
 
         $file_name = $request->name;
         if ($file_name == 'risk-manager') {
-            return response()->download('/downloads/RehobothRiskTool5.03.ex5');
+            return response()->download(storage_path('app/public/downloads/RehobothRiskTool5.03.ex5'));
         } else if ($file_name == 'mac-metatrader') {
-            return response()->download('/downloads/MT5 Client Terminal - MAC.dmg');
+            return response()->download(storage_path('app/public/downloads/MT5 Client Terminal - MAC.dmg'));
         } else if ($file_name == 'windows-metatrader') {
-            return response()->download('/downloads/MT5 Client Terminal - Windows.exe');
+            return response()->download(storage_path('app/public/downloads/MT5 Client Terminal - Windows.exe'));
         }
         // return 404 
         abort(404, 'File not found');
