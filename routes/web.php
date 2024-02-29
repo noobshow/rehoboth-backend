@@ -140,7 +140,7 @@ Route::middleware('auth')->group(function () {
         $request->validate([
             'name' => 'required|regex:/^[^\/]*$/',
         ]);
-        return response()->download(storage_path('app/downloads/' . $request->name));
+        return response()->download('/downloads/' . $request->name);
     })->name('download');
     
 Route::post('/update-trades-data', [OptimusSignalController::class, 'pushOptimusProTradeBlotters']);
