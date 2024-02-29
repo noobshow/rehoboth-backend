@@ -12,6 +12,8 @@ use App\Models\OptimusSignal;
 use App\Models\TradeBlotter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -144,11 +146,11 @@ Route::middleware('auth')->group(function () {
 
         $file_name = $request->name;
         if ($file_name == 'risk-manager') {
-            return response()->download(storage_path('public/downloads/RehobothRiskTool5.03.ex5'));
+            return Storage::download('RehobothRiskTool5.03.ex5');
         } else if ($file_name == 'mac-metatrader') {
-            return response()->download(storage_path('public/downloads/MT5 Client Terminal - MAC.dmg'));
+            return Storage::download('MT5 Client Terminal - MAC.dmg');
         } else if ($file_name == 'windows-metatrader') {
-            return response()->download(storage_path('public/downloads/MT5 Client Terminal - Windows.exe'));
+            return Storage::download('MT5 Client Terminal - Windows.exe');
         }
         // return 404 
         abort(404, 'File not found');
