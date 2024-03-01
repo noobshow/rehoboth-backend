@@ -155,7 +155,10 @@ Route::middleware('auth')->group(function () {
         // return 404 
         abort(404, 'File not found');
     })->name('download');
-    
+   
+});
+
+// Optimus Pro backend routes
 Route::post('/update-trades-data', [OptimusSignalController::class, 'pushOptimusProTradeBlotters']);
 Route::post('/update-news-data', [OptimusSignalController::class, 'pushOptimusProNewsDatas']);
 Route::post('/update-cdl-data', [OptimusSignalController::class, 'pushOptimusProCDLSignals']);
