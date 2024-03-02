@@ -70,6 +70,7 @@ var KTSigninGeneral = function() {
                         Swal.fire({
                             showConfirmButton: false,
                             showCancelButton: false,
+                            backdrop:false,
                             text: "Welcome to your Trade Room! Please wait while we redirect you.",
                             icon: "success",
                         });
