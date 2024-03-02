@@ -4,6 +4,7 @@
 @include('partials.head')
 <!--end::Head-->
 <!--begin::Body-->
+
 <body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled">
 	<!--begin::Main-->
 	<!--begin::Root-->
@@ -123,41 +124,48 @@
 												<!--begin::Table body-->
 												<tbody id="optimus_pro_signals">
 													@foreach ($optimus_data as $assetData)
-													<tr style="cursor: crosshair;"  id="optimus_pro_signal_asset_{{ strtolower($assetData->asset) }}">
+													<tr style="cursor: crosshair;" id="optimus_pro_signal_asset_{{ strtolower($assetData->asset) }}">
 														<td>
 															<div class="d-flex flex-column w-100 me-2">
 																<div class="d-flex flex-stack mb-2 ms-2 fw-bolder">
-																{{ strtoupper($assetData->asset) }}
+																	{{ strtoupper($assetData->asset) }}
 																	<!-- <span class="badge badge-light-success fw-bolder">{{ $assetData->asset }}</span> -->
 																</div>
 																<div class="progress h-6px w-100">
-																	<div 
-																		class="progress-bar" 
-																		role="progressbar"
-																		id="optimus_pro_signal_{{ strtolower($assetData->asset) }}_progress"
-																	@if ($assetData->asset_clr)
+																	<div class="progress-bar" role="progressbar" id="optimus_pro_signal_{{ strtolower($assetData->asset) }}_progress" @if ($assetData->asset_clr)
 																		style="width: 100%; background-color: {{ $assetData->asset_clr }};"
-																	@else
+																		@else
 																		style="width: 100%;"
-																	@endif
-																	/>
+																		@endif
+																		/>
+																	</div>
 																</div>
-															</div>
 														</td>
 														<td>
-															<span id="optimus_pro_signal_{{ strtolower($assetData->asset) }}_range" class="text-dark fw-bolder text-hover-primary d-block mb-1">{{ $assetData->range }}</span>
+															<button id="optimus_pro_signal_{{ strtolower($assetData->asset) }}_range" class="btn mb-1 w-100 btn-sm fw-bolder btn-primary {{ !empty($assetData->range) ? 'd-block' : 'd-none' }}">
+																{{ $assetData->range }}
+															</button>
+															<!-- class="text-dark fw-bolder text-hover-primary d-block mb-1"></span> -->
 														</td>
 														<td>
-															<span id="optimus_pro_signal_{{ strtolower($assetData->asset) }}_fundamental" style="color: {{ $assetData->fundamental_clr }};" class="fw-bolder text-hover-primary d-block mb-1">{{ $assetData->fundamental }}</span>
+															<button id="optimus_pro_signal_{{ strtolower($assetData->asset) }}_fundamental" class="btn mb-1 w-100 btn-sm fw-bolder {{ $assetData->fundamental == 'Buy' ? 'btn-success' : 'btn-danger' }} {{ !empty($assetData->fundamental) ? 'd-block' : 'd-none' }}">
+																{{ $assetData->fundamental }}
+															</button>
 														</td>
 														<td>
-															<span id="optimus_pro_signal_{{ strtolower($assetData->asset) }}_technical" style="color: {{ $assetData->technical_clr }};" class="fw-bolder text-hover-primary d-block mb-1">{{ $assetData->technical }}</span>
+															<button id="optimus_pro_signal_{{ strtolower($assetData->asset) }}_technical" class="btn mb-1 w-100 btn-sm fw-bolder {{ $assetData->technical == 'Buy' ? 'btn-success' : 'btn-danger' }} {{ !empty($assetData->technical) ? 'd-block' : 'd-none' }}">
+																{{ $assetData->technical }}
+															</button>
 														</td>
 														<td>
-															<span id="optimus_pro_signal_{{ strtolower($assetData->asset) }}_sentiment" style="color: {{ $assetData->sentiment_clr }};" class="fw-bolder text-hover-primary d-block mb-1">{{ $assetData->sentiment }}</span>
+															<button id="optimus_pro_signal_{{ strtolower($assetData->asset) }}_sentiment" class="btn mb-1 w-100 btn-sm fw-bolder {{ $assetData->sentiment == 'Buy' ? 'btn-success' : 'btn-danger' }} {{ !empty($assetData->sentiment) ? 'd-block' : 'd-none' }}">
+																{{ $assetData->sentiment }}
+															</button>
 														</td>
 														<td>
-															<span id="optimus_pro_signal_{{ strtolower($assetData->asset) }}_strategy" style="color: {{ $assetData->strategy_clr }};" class="fw-bolder text-hover-primary d-block mb-1">{{ $assetData->strategy }}</span>
+															<button id="optimus_pro_signal_{{ strtolower($assetData->asset) }}_strategy" class="btn mb-1 w-100 btn-sm fw-bolder {{ $assetData->strategy == 'Buy' ? 'btn-success' : 'btn-danger' }} {{ !empty($assetData->strategy) ? 'd-block' : 'd-none' }}">
+																{{ $assetData->strategy }}
+															</button>
 														</td>
 														<!-- <td>
 															<span id="optimus_pro_signal_{{ strtolower($assetData->asset) }}_volt" 
