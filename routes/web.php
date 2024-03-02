@@ -11,6 +11,7 @@ use App\Models\OptimusData;
 use App\Models\OptimusSignal;
 use App\Models\TradeBlotter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
@@ -156,6 +157,9 @@ Route::middleware('auth')->group(function () {
         abort(404, 'File not found');
     })->name('download');
    
+    Route::get("/home",function (Request $request) {
+        return Redirect::away("http://rehobothtraders.com");
+    })->name("home");
 });
 
 // Optimus Pro backend routes

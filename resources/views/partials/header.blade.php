@@ -15,7 +15,7 @@
                 <!--end::Svg Icon-->
             </div>
             <!--end::Heaeder menu toggle-->
-            <a href="{{ route('dashboard') }}">
+            <a href="{{ route('home') }}">
                 <img alt="Logo" src="assets/media/logos/logo.svg" class="h-20px h-lg-30px" />
             </a>
         </div>
