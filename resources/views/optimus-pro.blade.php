@@ -142,7 +142,7 @@
 																</div>
 														</td>
 														<td>
-															<button id="optimus_pro_signal_{{ strtolower($assetData->asset) }}_range" class="btn mb-1 w-100 btn-sm fw-bolder btn-primary {{ !empty($assetData->range) ? 'd-block' : 'd-none' }}">
+															<button id="optimus_pro_signal_{{ strtolower($assetData->asset) }}_range" class="btn mb-1 w-100 btn-sm fw-bolder btn-info {{ !empty($assetData->range) ? 'd-block' : 'd-none' }}">
 																{{ $assetData->range }}
 															</button>
 															<!-- class="text-dark fw-bolder text-hover-primary d-block mb-1"></span> -->
