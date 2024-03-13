@@ -9,6 +9,7 @@ use App\Events\TradeBlotterUpdated;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\TradeBlotter;
+use Illuminate\Support\Facades\Cache;
 
 class OptimusSignalController extends Controller
 {
@@ -228,6 +229,33 @@ class OptimusSignalController extends Controller
         return response()->json(['status' => true, 'message' => 'Y'], 200);
     }
 
+    /**
+     * 
+     * Push Optimus Pro Total Pips
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JSONResponse
+     */
+    public function pushOptimusProTotalPips(Request $request)
+    {
+        $request->validate([
+            'token' => 'required',
+            // 'data' => 'required'
+        ]);
+        $token = $request->token;
+        if ($token !== config('product.optimus_pro_token')) {
+            return response()->json(['status' => false], 404);
+        }
+        // get array of OptimusData from request
+        $total_pips = json_decode($request->data)->total_pips;
+        // tradeblotter exists
+        if (!$total_pips) {
+            return response()->json(['status' => false, 'message' => ''], 200);
+        }
+
+        // Storing the value
+        Cache::forever('total_pips', $total_pips);
+        return response()->json(['status' => true, 'message' => 'Y'], 200);
+    }
 
     /**
      * Push Optimus Pro Trade Blotter - backup

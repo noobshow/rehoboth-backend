@@ -167,5 +167,6 @@ Route::post('/update-trades-data', [OptimusSignalController::class, 'pushOptimus
 Route::post('/update-news-data', [OptimusSignalController::class, 'pushOptimusProNewsDatas']);
 Route::post('/update-cdl-data', [OptimusSignalController::class, 'pushOptimusProCDLSignals']);
 Route::post('/update-optimus-pro-data', [OptimusSignalController::class, 'pushOptimusProSignals']);
+Route::post('/update-total-pips', [OptimusSignalController::class, 'pushOptimusProTotalPips']);
 
 require __DIR__ . '/auth.php';

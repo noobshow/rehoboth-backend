@@ -129,7 +129,7 @@
 																</svg>
 															</span>
 															<!--end::Svg Icon-->
-															<div class="text-inverse-bg-body fw-bolder fs-1 mb-2 mt-5" data-kt-countup="true" data-kt-countup-value="100" data-kt-countup-suffix="+ <span class='fw-lighter fs-6'>Pips/mo</span>">100+ <span class="fw-lighter fs-6">Pips/mo</span></div>
+															<div class="text-inverse-bg-body fw-bolder fs-1 mb-2 mt-5" data-kt-countup="true" data-kt-countup-value="{{ Cache::get('total_pips') }}" data-kt-countup-suffix="+ <span class='fw-lighter fs-6'>Pips</span>">3,650+ <span class="fw-lighter fs-6">Pips</span></div>
 															<div class="fw-bold text-inverse-bg-body fs-6">Profitable Signals</div>
 														</div>
 														<!--end::Body-->

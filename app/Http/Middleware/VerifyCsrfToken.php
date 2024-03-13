@@ -22,6 +22,7 @@ class VerifyCsrfToken extends Middleware
         '/update-optimus-pro-data',
         '/update-trades-data',
         '/update-news-data',
-        '/update-cdl-data'
+        '/update-cdl-data',
+        '/update-total-pips',
     ];
 }
