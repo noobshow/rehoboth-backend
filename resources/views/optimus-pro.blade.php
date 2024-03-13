@@ -148,22 +148,22 @@
 															<!-- class="text-dark fw-bolder text-hover-primary d-block mb-1"></span> -->
 														</td>
 														<td>
-															<button id="optimus_pro_signal_{{ strtolower($assetData->asset) }}_fundamental" class="btn mb-1 w-100 btn-sm fw-bolder {{ $assetData->fundamental == 'Buy' ? 'btn-success' : 'btn-danger' }} {{ !empty($assetData->fundamental) ? 'd-block' : 'd-none' }}">
+															<button id="optimus_pro_signal_{{ strtolower($assetData->asset) }}_fundamental" class="btn mb-1 w-100 btn-sm fw-bolder {{ $assetData->fundamental == 'Buy' ? 'btn-primary' : 'btn-danger' }} {{ !empty($assetData->fundamental) ? 'd-block' : 'd-none' }}">
 																{{ $assetData->fundamental }}
 															</button>
 														</td>
 														<td>
-															<button id="optimus_pro_signal_{{ strtolower($assetData->asset) }}_technical" class="btn mb-1 w-100 btn-sm fw-bolder {{ $assetData->technical == 'Buy' ? 'btn-success' : 'btn-danger' }} {{ !empty($assetData->technical) ? 'd-block' : 'd-none' }}">
+															<button id="optimus_pro_signal_{{ strtolower($assetData->asset) }}_technical" class="btn mb-1 w-100 btn-sm fw-bolder {{ $assetData->technical == 'Buy' ? 'btn-primary' : 'btn-danger' }} {{ !empty($assetData->technical) ? 'd-block' : 'd-none' }}">
 																{{ $assetData->technical }}
 															</button>
 														</td>
 														<td>
-															<button id="optimus_pro_signal_{{ strtolower($assetData->asset) }}_sentiment" class="btn mb-1 w-100 btn-sm fw-bolder {{ $assetData->sentiment == 'Buy' ? 'btn-success' : 'btn-danger' }} {{ !empty($assetData->sentiment) ? 'd-block' : 'd-none' }}">
+															<button id="optimus_pro_signal_{{ strtolower($assetData->asset) }}_sentiment" class="btn mb-1 w-100 btn-sm fw-bolder {{ $assetData->sentiment == 'Buy' ? 'btn-primary' : 'btn-danger' }} {{ !empty($assetData->sentiment) ? 'd-block' : 'd-none' }}">
 																{{ $assetData->sentiment }}
 															</button>
 														</td>
 														<td>
-															<button id="optimus_pro_signal_{{ strtolower($assetData->asset) }}_strategy" class="btn mb-1 w-100 btn-sm fw-bolder {{ $assetData->strategy == 'Buy' ? 'btn-success' : 'btn-danger' }} {{ !empty($assetData->strategy) ? 'd-block' : 'd-none' }}">
+															<button id="optimus_pro_signal_{{ strtolower($assetData->asset) }}_strategy" class="btn mb-1 w-100 btn-sm fw-bolder {{ $assetData->strategy == 'Buy' ? 'btn-primary' : 'btn-danger' }} {{ !empty($assetData->strategy) ? 'd-block' : 'd-none' }}">
 																{{ $assetData->strategy }}
 															</button>
 														</td>
