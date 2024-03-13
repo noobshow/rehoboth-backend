@@ -31,7 +31,13 @@
 	<div class="container-xxl d-flex flex-column flex-md-row align-items-center justify-content-between">
 		<!--begin::Disclaimer-->
 		<div class="text-dark order-2 order-md-1">
-			<span class="text-muted fw-bold me-1">Trading on financial markets come with a high risk of losing fund swiftly due to considerable risk exposure or leverage. History shows that about majority of retail investor accounts lose fund when Trading on financial markets with their providers. You should therefore, consider whether you understand how financial markets work and whether you can afford to take the high risk of losing your fund. To be informed, you can lose all, but not more than the balance of your Trading Account. These products may not be suitable for all clients therefore ensure you understand the risks and seek independent financial adviser. Rehoboth Traders LTD accepts no responsibility for any use of her instruments and for any outcome that result. No representation or warranty is given as to the absolute or correctness of this information, therefore, any person acting on it does so entirely at their own risk.</span>
+			<span class="text-muted fw-bold me-1">
+			Trading on financial markets carries a significant risk of rapid fund loss due to leverage and high risk involved. Historical data demonstrates that the majority of retail investor accounts tend to lose money when trading with their providers on financial markets. Therefore, it is crucial to carefully consider your understanding of how financial markets operate and your ability to bear the substantial risk of losing your funds.
+			<br/>
+			Please be aware that trading activities can result in the complete loss of your trading account, but not more than that. It is important to note that these financial products may not be suitable for all clients. Therefore, it is essential to thoroughly understand the associated risks and seek advice from an independent financial advisor.
+			<br/>
+			Rehoboth Traders Ltd. disclaims any liability for the use of its instruments and the outcomes that may follow. Anyone acting on this material does so at their own risk, and no claim or warranty is made regarding the accuracy or completeness of the information presented.
+			</span>
 		</div>
 		<!--end::Disclaimer-->
 	</div>
