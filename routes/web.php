@@ -44,11 +44,13 @@ Route::middleware('auth')->group(function () {
             $is_valid_optimus_user = $is_valid_optimus_user || $is_funded_account || $user->role == 'admin';
             $actively_funded = $funded_accounts->where('active', true)->count() > 0;
             // get TradeBlotter Data
-            $trade_blotter_data = [];
+            $alert = "";
             $cdl_and_bias_data = [];
+            $trade_blotter_data = [];
             if ($is_valid_optimus_user) {
-                $trade_blotter_data = TradeBlotter::all();
                 $cdl_and_bias_data = CDLSignal::all();
+                $trade_blotter_data = TradeBlotter::all();
+                $alert = Cache::get("optimus-mover-alert");
             }
             // read each news data from model, then sort by time in callback, then take 5
             $news_data = NewsData::all()->sortByDesc(function ($news) {
@@ -57,6 +59,7 @@ Route::middleware('auth')->group(function () {
             // Log::debug("CDL Signals: " . $cdl_and_bias_data->toJson());
 
             return view('dashboard', [
+                'alert' => $alert,
                 'news_data' => $news_data,
                 'actively_funded' => $actively_funded,
                 'funded_accounts' => $funded_accounts,
@@ -79,6 +82,7 @@ Route::middleware('auth')->group(function () {
             $is_valid_optimus_user = $user->subscribedToProduct(config('product.product_optimus_pro'));
             $is_valid_optimus_user = $is_valid_optimus_user || $is_funded_account || $user->role == 'admin';
             // get Optimus Data
+            $alert = "";
             $optimus_data = [];
             if ($is_valid_optimus_user) {
                 // is email verified?
@@ -87,12 +91,14 @@ Route::middleware('auth')->group(function () {
                 }
 
                 $optimus_data = OptimusSignal::all();
+                $alert = Cache::get("optimus-mover-alert");
             }
             // show EURUSD to non-subscribed users
             // } else {
             //     $optimus_data = OptimusSignal::where('asset', 'EURUSD')->get();
 
             return view('optimus-pro', [
+                'alert' => $alert,
                 'optimus_data' => $optimus_data,
                 'funded_accounts' => $funded_accounts,
                 'intent' => $user->createSetupIntent(),
@@ -121,7 +127,13 @@ Route::middleware('auth')->group(function () {
                 return redirect()->route('verification.notice');
             }
 
+            $alert = "";
+            if ($is_valid_optimus_user) {
+                $alert = Cache::get("optimus-mover-alert");
+            }
+
             return view('get-funded', [
+                'alert' => $alert,
                 'actively_funded' => $actively_funded,
                 'funded_accounts' => $funded_accounts,
                 // 'intent' => $user->createSetupIntent(),
@@ -159,7 +171,7 @@ Route::middleware('auth')->group(function () {
         abort(404, 'File not found');
     })->name('download');
    
-    Route::get("/home",function (Request $request) {
+    Route::get("/home", function (Request $request) {
         return Redirect::away("http://rehobothtraders.com");
     })->name("home");
 });
@@ -170,5 +182,16 @@ Route::post('/update-news-data', [OptimusSignalController::class, 'pushOptimusPr
 Route::post('/update-cdl-data', [OptimusSignalController::class, 'pushOptimusProCDLSignals']);
 Route::post('/update-optimus-pro-data', [OptimusSignalController::class, 'pushOptimusProSignals']);
 Route::post('/update-total-pips', [OptimusSignalController::class, 'pushOptimusProTotalPips']);
+
+Route::post('/update-alert', function (Request $request) {
+    $request->validate([
+        'alert' => 'required',
+    ]);
+    $alert = $request->alert;
+    Cache::put("optimus-mover-alert", $alert, now()->addMinutes(2));
+    // trigger event
+    event(new OptimusAlertUpdated($alert));
+    return response()->json(['status' => true], 200);
+})->name('add.alert');
 
 require __DIR__ . '/auth.php';

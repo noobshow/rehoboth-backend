@@ -24,7 +24,6 @@
 						<div class="row g-5 g-xxl-8">
 							<!--begin::Col-->
 							<div class="col-xxl-12">
-								@include('partials.alert', ['alert' => $alert])
 								<!--begin::Row-->
 								<div class="row gx-5 gx-xl-8 mb-5 mb-xl-8">
 									<div class="col-xxl-12">
@@ -116,11 +115,11 @@
 											<div class="col-xxl-6">
 												<!--begin::Tiles Widget 5-->
 												@if ($is_valid_optimus_user)
-													<a href="{{ route('optimus-pro') }}" class="card bg-bg-body card-xxl-stretch">
-												@else
-												<a href="#" data-bs-toggle="modal" data-bs-target="#modal_purchase_optimus_pro" class="card bg-bg-body card-xxl-stretch">
-													@endif
-													<!--begin::Body-->
+												<a href="{{ route('optimus-pro') }}" class="card bg-bg-body card-xxl-stretch">
+													@else
+													<a href="#" data-bs-toggle="modal" data-bs-target="#modal_purchase_optimus_pro" class="card bg-bg-body card-xxl-stretch">
+														@endif
+														<!--begin::Body-->
 														<div class="card-body border border-primary border-active active rounded">
 															<!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
 															<span class="svg-icon svg-icon-success svg-icon-2hx ms-n1">
@@ -326,58 +325,58 @@
 																			<div id="optimus_pro_candle_signal_text">
 																				<span class="fw-bolder fs-6 is-bearish d-none">
 																					<span class="svg-icon svg-icon-3 svg-icon-danger">
-																					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																						<rect opacity="0.5" x="11" y="18" width="13" height="2" rx="1" transform="rotate(-90 11 18)" fill="black"></rect>
-																						<path d="M11.4343 15.4343L7.25 11.25C6.83579 10.8358 6.16421 10.8358 5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75L11.2929 18.2929C11.6834 18.6834 12.3166 18.6834 12.7071 18.2929L18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25C17.8358 10.8358 17.1642 10.8358 16.75 11.25L12.5657 15.4343C12.2533 15.7467 11.7467 15.7467 11.4343 15.4343Z" fill="black"></path>
-																					</svg>
-																				</span>Bearish</span>
+																						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																							<rect opacity="0.5" x="11" y="18" width="13" height="2" rx="1" transform="rotate(-90 11 18)" fill="black"></rect>
+																							<path d="M11.4343 15.4343L7.25 11.25C6.83579 10.8358 6.16421 10.8358 5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75L11.2929 18.2929C11.6834 18.6834 12.3166 18.6834 12.7071 18.2929L18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25C17.8358 10.8358 17.1642 10.8358 16.75 11.25L12.5657 15.4343C12.2533 15.7467 11.7467 15.7467 11.4343 15.4343Z" fill="black"></path>
+																						</svg>
+																					</span>Bearish</span>
 																				<span class="fw-bolder fs-6 is-bullish d-none">
-																						<span class="svg-icon svg-icon-3 svg-icon-success">
+																					<span class="svg-icon svg-icon-3 svg-icon-success">
 																						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 																							<rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1" transform="rotate(90 13 6)" fill="black"></rect>
 																							<path d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z" fill="black"></path>
 																						</svg>
-																				</span>Bullish</span>
-																			</div>																					
+																					</span>Bullish</span>
+																			</div>
 																		</div>
 																	</td>
 																</tr>
 																@foreach($cdl_and_bias_data as $forecast)
-																	@if($forecast->cdl)
-																		<tr>
-																			<td style="color: {{ $forecast->cdl_clr ?? 'dark' }};" class="fw-bold">
-																				<div class="d-flex justify-content-around">
-																					<div class="fw-bolder fs-7">
-																					{{ $forecast->cdl }}
-																					</div>
-																					<div>
-																						<span class="fw-bolder fs-6">===></span>
-																					</div>
-																					<div id="optimus_pro_investors_signal_text">
-																						@if($forecast->cdl_clr == 'crimson')
-																						<!-- Bearish -->
-																						<span class="fw-bolder fs-6 is-bearish">
-																							<span class="svg-icon svg-icon-3 svg-icon-danger">
-																							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																								<rect opacity="0.5" x="11" y="18" width="13" height="2" rx="1" transform="rotate(-90 11 18)" fill="black"></rect>
-																								<path d="M11.4343 15.4343L7.25 11.25C6.83579 10.8358 6.16421 10.8358 5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75L11.2929 18.2929C11.6834 18.6834 12.3166 18.6834 12.7071 18.2929L18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25C17.8358 10.8358 17.1642 10.8358 16.75 11.25L12.5657 15.4343C12.2533 15.7467 11.7467 15.7467 11.4343 15.4343Z" fill="black"></path>
-																							</svg>
-																						</span>Bearish</span>
-																						@elseif($forecast->cdl_clr == 'forestgreen')
-																							<!-- Bullish -->
-																							<span class="fw-bolder fs-6 is-bullish">
-																									<span class="svg-icon svg-icon-3 svg-icon-success">
-																									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																										<rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1" transform="rotate(90 13 6)" fill="black"></rect>
-																										<path d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z" fill="black"></path>
-																									</svg>
-																							</span>Bullish</span>
-																						@endif
-																					</div>																					
-																				</div>
-																			</td>
-																		</tr>
-																	@endif
+																@if($forecast->cdl)
+																<tr>
+																	<td style="color: {{ $forecast->cdl_clr ?? 'dark' }};" class="fw-bold">
+																		<div class="d-flex justify-content-around">
+																			<div class="fw-bolder fs-7">
+																				{{ $forecast->cdl }}
+																			</div>
+																			<div>
+																				<span class="fw-bolder fs-6">===></span>
+																			</div>
+																			<div id="optimus_pro_investors_signal_text">
+																				@if($forecast->cdl_clr == 'crimson')
+																				<!-- Bearish -->
+																				<span class="fw-bolder fs-6 is-bearish">
+																					<span class="svg-icon svg-icon-3 svg-icon-danger">
+																						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																							<rect opacity="0.5" x="11" y="18" width="13" height="2" rx="1" transform="rotate(-90 11 18)" fill="black"></rect>
+																							<path d="M11.4343 15.4343L7.25 11.25C6.83579 10.8358 6.16421 10.8358 5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75L11.2929 18.2929C11.6834 18.6834 12.3166 18.6834 12.7071 18.2929L18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25C17.8358 10.8358 17.1642 10.8358 16.75 11.25L12.5657 15.4343C12.2533 15.7467 11.7467 15.7467 11.4343 15.4343Z" fill="black"></path>
+																						</svg>
+																					</span>Bearish</span>
+																				@elseif($forecast->cdl_clr == 'forestgreen')
+																				<!-- Bullish -->
+																				<span class="fw-bolder fs-6 is-bullish">
+																					<span class="svg-icon svg-icon-3 svg-icon-success">
+																						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																							<rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1" transform="rotate(90 13 6)" fill="black"></rect>
+																							<path d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z" fill="black"></path>
+																						</svg>
+																					</span>Bullish</span>
+																				@endif
+																			</div>
+																		</div>
+																	</td>
+																</tr>
+																@endif
 																@endforeach
 															</tbody>
 															<!--end::Table body-->
@@ -412,13 +411,13 @@
 																				<span class="fw-bolder fs-6 is-neutral d-none">Neutral</span>
 																				<span class="fw-bolder fs-6 is-bearish d-none">
 																					<span class="svg-icon svg-icon-3 svg-icon-danger">
-																					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																						<rect opacity="0.5" x="11" y="18" width="13" height="2" rx="1" transform="rotate(-90 11 18)" fill="black"></rect>
-																						<path d="M11.4343 15.4343L7.25 11.25C6.83579 10.8358 6.16421 10.8358 5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75L11.2929 18.2929C11.6834 18.6834 12.3166 18.6834 12.7071 18.2929L18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25C17.8358 10.8358 17.1642 10.8358 16.75 11.25L12.5657 15.4343C12.2533 15.7467 11.7467 15.7467 11.4343 15.4343Z" fill="black"></path>
-																					</svg>
-																				</span>Bearish</span>
+																						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																							<rect opacity="0.5" x="11" y="18" width="13" height="2" rx="1" transform="rotate(-90 11 18)" fill="black"></rect>
+																							<path d="M11.4343 15.4343L7.25 11.25C6.83579 10.8358 6.16421 10.8358 5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75L11.2929 18.2929C11.6834 18.6834 12.3166 18.6834 12.7071 18.2929L18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25C17.8358 10.8358 17.1642 10.8358 16.75 11.25L12.5657 15.4343C12.2533 15.7467 11.7467 15.7467 11.4343 15.4343Z" fill="black"></path>
+																						</svg>
+																					</span>Bearish</span>
 																				<span class="fw-bolder fs-6 is-bullish d-none">
-																						<span class="svg-icon svg-icon-3 svg-icon-success">
+																					<span class="svg-icon svg-icon-3 svg-icon-success">
 																						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 																							<rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1" transform="rotate(90 13 6)" fill="black"></rect>
 																							<path d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z" fill="black"></path>
@@ -430,37 +429,37 @@
 																</tr>
 																@foreach($cdl_and_bias_data as $forecast)
 																@if($forecast->bias_clr)
-																	<tr>
-																		<td style="color: {{ $forecast->bias_clr ?? 'dark' }};" class="fw-bold">
-																			<div class="d-flex justify-content-around">
-																				<div class="fw-bolder fs-7">{{ $forecast->bias }}</div>
-																				<div>
-																					<span class="fw-bolder fs-6">===></span>
-																				</div>
-																				<div>
-																					@if($forecast->bias_clr == 'lightsalmon')
-																						<span class="fw-bolder fs-6">
-																							<span class="svg-icon svg-icon-3 svg-icon-danger">
-																							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																								<rect opacity="0.5" x="11" y="18" width="13" height="2" rx="1" transform="rotate(-90 11 18)" fill="black"></rect>
-																								<path d="M11.4343 15.4343L7.25 11.25C6.83579 10.8358 6.16421 10.8358 5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75L11.2929 18.2929C11.6834 18.6834 12.3166 18.6834 12.7071 18.2929L18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25C17.8358 10.8358 17.1642 10.8358 16.75 11.25L12.5657 15.4343C12.2533 15.7467 11.7467 15.7467 11.4343 15.4343Z" fill="black"></path>
-																							</svg>
-																						</span>Bearish</span>
-																					@elseif($forecast->bias_clr == 'chartreuse')
-																						<span class="fw-bolder fs-6">
-																								<span class="svg-icon svg-icon-3 svg-icon-success">
-																								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																									<rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1" transform="rotate(90 13 6)" fill="black"></rect>
-																									<path d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z" fill="black"></path>
-																								</svg>
-																							</span>Bullish</span>
-																					@else
-																					<span class="fw-bolder fs-6">Neutral</span>
-																					@endif
-																				</div>
+																<tr>
+																	<td style="color: {{ $forecast->bias_clr ?? 'dark' }};" class="fw-bold">
+																		<div class="d-flex justify-content-around">
+																			<div class="fw-bolder fs-7">{{ $forecast->bias }}</div>
+																			<div>
+																				<span class="fw-bolder fs-6">===></span>
 																			</div>
-																		</td>
-																	</tr>
+																			<div>
+																				@if($forecast->bias_clr == 'lightsalmon')
+																				<span class="fw-bolder fs-6">
+																					<span class="svg-icon svg-icon-3 svg-icon-danger">
+																						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																							<rect opacity="0.5" x="11" y="18" width="13" height="2" rx="1" transform="rotate(-90 11 18)" fill="black"></rect>
+																							<path d="M11.4343 15.4343L7.25 11.25C6.83579 10.8358 6.16421 10.8358 5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75L11.2929 18.2929C11.6834 18.6834 12.3166 18.6834 12.7071 18.2929L18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25C17.8358 10.8358 17.1642 10.8358 16.75 11.25L12.5657 15.4343C12.2533 15.7467 11.7467 15.7467 11.4343 15.4343Z" fill="black"></path>
+																						</svg>
+																					</span>Bearish</span>
+																				@elseif($forecast->bias_clr == 'chartreuse')
+																				<span class="fw-bolder fs-6">
+																					<span class="svg-icon svg-icon-3 svg-icon-success">
+																						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																							<rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1" transform="rotate(90 13 6)" fill="black"></rect>
+																							<path d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z" fill="black"></path>
+																						</svg>
+																					</span>Bullish</span>
+																				@else
+																				<span class="fw-bolder fs-6">Neutral</span>
+																				@endif
+																			</div>
+																		</div>
+																	</td>
+																</tr>
 																@endif
 																@endforeach
 															</tbody>
@@ -2332,20 +2331,7 @@
 	</div>
 	<!--end::Scrolltop-->
 	<!--end::Main-->
-	<script>
-		var hostUrl = "assets/";
-	</script>
-	<!--begin::Javascript-->
-	<!--begin::Global Javascript Bundle(used by all pages)-->
-	<script src="assets/plugins/global/plugins.bundle.js"></script>
-	<script src="assets/js/scripts.bundle.js"></script>
-	<!--end::Global Javascript Bundle-->
-	<!--begin::Page Vendors Javascript(used by this page)-->
-	<script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
-	<!--end::Page Vendors Javascript-->
-	<!--begin::Page Custom Javascript(used by this page)-->
-	<script src="assets/js/custom/widgets.js"></script>
-	<script src="assets/js/custom/apps/chat/chat.js"></script>
+	@include('partials.global-scripts')
 	<script src="https://js.stripe.com/v3/"></script>
 	<script>
 		const stripe = Stripe("{{ config('cashier.key') }}");
