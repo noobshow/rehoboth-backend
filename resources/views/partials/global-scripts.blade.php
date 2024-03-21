@@ -28,16 +28,11 @@
         "hideMethod": "fadeOut"
     };
 </script>
-<script>
-    function showAlert(text, title) {
-        toastr.info(text, title);
-    }
-</script>
 
 @if($alert)
 <script>
     $(document).ready(function() {
-        showAlert("{{$alert}}", "Signal Target");
+        toastr.info("{{$alert}}", "Signal Target");
     });
     // TODO Show alert for 2 minutes
 </script>

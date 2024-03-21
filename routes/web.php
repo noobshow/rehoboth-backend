@@ -171,10 +171,17 @@ Route::middleware('auth')->group(function () {
         abort(404, 'File not found');
     })->name('download');
    
+});
+
+/**
+ * Redirects the user to the homepage.
+ *
+ * @param Request 
+ * @return RedirectResponse
+ */
     Route::get("/home", function (Request $request) {
         return Redirect::away("http://rehobothtraders.com");
     })->name("home");
-});
 
 // Optimus Pro backend routes
 Route::post('/update-trades-data', [OptimusSignalController::class, 'pushOptimusProTradeBlotters']);
