@@ -24,5 +24,6 @@ class VerifyCsrfToken extends Middleware
         '/update-news-data',
         '/update-cdl-data',
         '/update-total-pips',
+        '/update-alert',
     ];
 }

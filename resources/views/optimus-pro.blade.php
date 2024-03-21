@@ -785,19 +785,7 @@
 	</div>
 	<!--end::Scrolltop-->
 	<!--end::Main-->
-	<script>
-		var hostUrl = "assets/";
-	</script>
-	<!--begin::Javascript-->
-	<!--begin::Global Javascript Bundle(used by all pages)-->
-	<script src="assets/plugins/global/plugins.bundle.js"></script>
-	<script src="assets/js/scripts.bundle.js"></script>
-	<!--end::Global Javascript Bundle-->
-	<!--begin::Page Vendors Javascript(used by this page)-->
-	<script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
-	<!--end::Page Vendors Javascript-->
-	<!--begin::Page Custom Javascript(used by this page)-->
-	<script src="assets/js/custom/widgets.js"></script>
+	@include('partials.global-scripts')
 	<script src="assets/js/custom/apps/chat/chat.js"></script>
 	<script src="https://js.stripe.com/v3/"></script>
 	<script>
@@ -825,7 +813,6 @@
 		})
 	</script>
 	<script src="assets/js/custom/modals/select-optimuspro-plan.js"></script>
-	@vite(['resources/js/bootstrap.js', 'resources/js/events.js'])
 
 	<script>
 		// initial zoom

@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\OptimusAlertUpdated;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Signal\OptimusSignalController;
@@ -11,6 +12,7 @@ use App\Models\OptimusData;
 use App\Models\OptimusSignal;
 use App\Models\TradeBlotter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;

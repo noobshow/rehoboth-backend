@@ -24,6 +24,7 @@
 						<div class="row g-5 g-xxl-8">
 							<!--begin::Col-->
 							<div class="col-xxl-12">
+								@include('partials.alert', ['alert' => $alert])
 								<!--begin::Row-->
 								<div class="row gx-5 gx-xl-8 mb-5 mb-xl-8">
 									<div class="col-xxl-12">
