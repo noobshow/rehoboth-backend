@@ -171,6 +171,40 @@ Route::middleware('auth')->group(function () {
         abort(404, 'File not found');
     })->name('download');
    
+    Route::get('administraight', function () {
+        $user = auth()->user();
+        if ($user instanceof App\Models\User && $user->role == 'admin') { // Check if $user is an instance of User model
+
+            $alert = Cache::get("optimus-mover-alert");
+            $users = App\Models\User::with("fundedAccounts")->get();
+
+            return view('adminer', [
+                'alert' => $alert,
+                'users' => $users,
+                // 'actively_funded' => $actively_funded,
+                // 'funded_accounts' => $funded_accounts,
+                // // 'intent' => $user->createSetupIntent(),
+                // 'is_funded_account' => $is_funded_account,
+                // 'is_actively_funded' => $is_actively_funded,
+                // 'is_valid_optimus_user' => $is_valid_optimus_user
+            ]);
+        }
+        return view('adminer');
+    })->name('administraight');
+
+    /**
+     * Redirects the user(admin) to webmail.
+     *
+     * @param Request 
+     * @return RedirectResponse
+     */
+    Route::get("/adminer-mail", function (Request $request) {
+        $user = auth()->user();
+        if ($user instanceof App\Models\User && $user->role == 'admin') { // Check if $user is an instance of User model
+            return Redirect::away("https://webmail.rehobothtraders.com");
+        }
+        return Redirect::away("https://rehobothtraders.com");
+    })->name("adminer-mail");
 });
 
 /**
