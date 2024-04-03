@@ -4,7 +4,6 @@
 @include('partials.head')
 <!--end::Head-->
 <!--begin::Body-->
-
 <body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled">
 	<!--begin::Main-->
 	<!--begin::Root-->
@@ -2365,5 +2364,4 @@
 	<!--end::Javascript-->
 </body>
 <!--end::Body-->
-
 </html>

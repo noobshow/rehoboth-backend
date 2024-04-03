@@ -147,6 +147,22 @@
                         <span class="menu-arrow d-lg-none"></span>
                     </a>
                 </div>
+                @if(Auth::user()->role == 'admin' || Auth::user()->role == 'staff')
+                <div class="menu-item menu-lg-down-accordion me-lg-1">
+                    <a class="menu-link py-3 {{ request()->routeIs('administraight') ? 'active' : '' }}" href="{{ route('administraight') }}">
+                        <span class="menu-title">Administration</span>
+                        <span class="menu-arrow d-lg-none"></span>
+                    </a>
+                </div>
+                @endif
+                @if(Auth::user()->role == 'admin' || Auth::user()->role == 'staff')
+                <div class="menu-item menu-lg-down-accordion me-lg-1">
+                    <a class="menu-link py-3" href="{{ route('adminer-mail') }}">
+                        <span class="menu-title">Webmail</span>
+                        <span class="menu-arrow d-lg-none"></span>
+                    </a>
+                </div>
+                @endif
             </div>
             <!--end::Menu-->
         </div>
