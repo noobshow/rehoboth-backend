@@ -188,11 +188,12 @@
                                                         @else
                                                             <!--begin::Menu item-->
                                                             <div class="menu-item px-3">
-                                                                <a href="#" class="menu-link px-3" data-bs-toggle="modal" data-bs-target="#kt_modal_new_account">Fund Account</a>
+                                                                <!-- TODO data-bs-target="#kt_modal_new_account" -->
+                                                                <a href="#" class="menu-link px-3" data-bs-toggle="modal">Fund Account</a>
                                                             </div>
                                                             <!--end::Menu item-->
                                                         @endif
-                                                    @else
+                                                    <!-- else -->
                                                         <!-- TODO -->
                                                         <!--begin::Menu item-->
                                                         <!-- <div class="menu-item px-3">
