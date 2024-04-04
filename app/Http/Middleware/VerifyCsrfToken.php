@@ -17,6 +17,7 @@ class VerifyCsrfToken extends Middleware
         'post-login',
         'post-forgot-password',
         'post-reset-password',
+        'activate-funded-account',
         // stripe-charges
         '/stripe-charge',
         '/update-optimus-pro-data',

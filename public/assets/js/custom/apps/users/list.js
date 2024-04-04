@@ -119,20 +119,21 @@ var KTSubscriptionsList = function () {
                 }).then(function (result) {
                     if (result.value) {
                         Swal.fire({
-                            text: "You have deleted " + customerName + "!.",
-                            icon: "success",
+                            text: "Unfortunately, " + customerName + " account can not be deleted!.",
+                            icon: "error",
                             buttonsStyling: false,
                             confirmButtonText: "Ok, got it!",
                             customClass: {
                                 confirmButton: "btn fw-bold btn-primary",
                             }
-                        }).then(function () {
-                            // Remove current row
-                            datatable.row($(parent)).remove().draw();
-                        }).then(function () {
-                            // Detect checked checkboxes
-                            toggleToolbars();
                         });
+                        // }).then(function () {
+                        //     // Remove current row
+                        //     datatable.row($(parent)).remove().draw();
+                        // }).then(function () {
+                        //     // Detect checked checkboxes
+                        //     toggleToolbars();
+                        // });
                     } else if (result.dismiss === 'cancel') {
                         Swal.fire({
                             text: customerName + " was not deleted.",
@@ -266,7 +267,7 @@ var KTSubscriptionsList = function () {
             initToggleToolbar();
             handleSearch();
             handleRowDeletion();
-            handleFilter();
+            // handleFilter();
         }
     }
 }();
