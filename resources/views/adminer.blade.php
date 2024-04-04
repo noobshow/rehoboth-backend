@@ -136,7 +136,7 @@
                                             <!--begin::Product=-->
                                             @if($user->fundedAccounts->count() > 0)
                                                 @if($user->fundedAccounts->where('active', true)->first())
-                                                <td>Yes - ${{ number_format($user->fundedAccounts->where('active', true)->first()->funded_amount) }}</td>
+                                                <td>Funded - ${{ number_format($user->fundedAccounts->where('active', true)->first()->funded_amount) }}</td>
                                                 @else
                                                  <td>Waiting to be funded - ${{ number_format($user->fundedAccounts->first()->funded_amount) }}</td>
                                                  @endif
