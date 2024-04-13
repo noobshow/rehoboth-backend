@@ -3,16 +3,19 @@
 use App\Events\OptimusAlertUpdated;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\Signal\OptimusSignalController;
 use App\Http\Controllers\Payment\StripeController;
 use App\Models\CDLSignal;
 use App\Models\FundedAccount;
+use App\Models\Message;
 use App\Models\NewsData;
 use App\Models\OptimusData;
 use App\Models\OptimusSignal;
 use App\Models\TradeBlotter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
@@ -84,6 +87,7 @@ Route::middleware('auth')->group(function () {
             // get Optimus Data
             $alert = "";
             $optimus_data = [];
+            $messages = [];
             if ($is_valid_optimus_user) {
                 // is email verified?
                 if (!$user->hasVerifiedEmail() && $user->role != 'admin') {
@@ -92,6 +96,31 @@ Route::middleware('auth')->group(function () {
 
                 $optimus_data = OptimusSignal::all();
                 $alert = Cache::get("optimus-mover-alert");
+                // $messages = $user->messagesAfterLastMessage()->get(); // TODO include user nickname
+
+                // Find the timestamp of the user's last message or 24 hours ago, whichever is more recent
+                // $lastMessageTimestamp = Message::where('user_id', $user->id)
+                //     ->latest('created_at')
+                //     ->first()
+                //     ->created_at ?? now()->subDay();
+
+                // $thresholdTimestamp = now()->subDay()->gt($lastMessageTimestamp) ? now()->subDay() : $lastMessageTimestamp;
+
+                // Set the threshold timestamp to 24 hours ago
+                $thresholdTimestamp = now()->subDay();
+
+                // Fetch all messages sent after the calculated threshold timestamp, limit to 500
+                $messages = Message::with('user')
+                    ->where('created_at', '>', $thresholdTimestamp)
+                    // ->latest('created_at')
+                    ->limit(500)
+                    ->get();
+                //Show 500 messages if the number of messages is less than 500
+                if (count($messages) < 500) {
+                    $messages = Message::with('user')
+                        ->limit(500)
+                        ->get();
+                }
             }
             // show EURUSD to non-subscribed users
             // } else {
@@ -99,6 +128,7 @@ Route::middleware('auth')->group(function () {
 
             return view('optimus-pro', [
                 'alert' => $alert,
+                'messages' => $messages,
                 'optimus_data' => $optimus_data,
                 'funded_accounts' => $funded_accounts,
                 'intent' => $user->createSetupIntent(),
@@ -148,6 +178,8 @@ Route::middleware('auth')->group(function () {
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::post('/send-chat-message', [ChatController::class, 'sendMessage']);
 
     // Payment routes
     Route::post('/stripe-charge', [StripeController::class, 'handlePayment'])->name('stripe.charge');

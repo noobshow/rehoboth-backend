@@ -41,6 +41,14 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        
+        $user = Auth::user();
+        if ($user instanceof \App\Models\User && $user->role == 'admin') {
+            return response()->json([
+                'status' => true,
+                'redirect' => route('administraight'),
+            ]);    
+        }
 
         return response()->json([
             'status' => true,

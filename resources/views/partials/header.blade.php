@@ -29,7 +29,7 @@
                 <!--begin::Chat-->
                 <div class="d-flex align-items-center ms-3 ms-lg-4">
                     <!--begin::Drawer wrapper-->
-                    <div class="btn btn-icon btn-primary disabled position-relative w-30px h-30px w-lg-40px h-lg-40px" id="kt_drawer_chat_toggle">3
+                    <div class="btn btn-icon btn-primary position-relative w-30px h-30px w-lg-40px h-lg-40px" id="kt_drawer_chat_toggle">{{count($messages)}}
                         <!--begin::Bullet-->
                         <span class="d-none bullet bullet-dot bg-danger h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink"></span>
                         <!--end::Bullet-->

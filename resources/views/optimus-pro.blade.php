@@ -71,7 +71,12 @@
 				</div>
 				<!--end::Toolbar-->
 				<!--begin::Container-->
-				<div id="kt_content_container" class="d-flex flex-column-fluid align-items-start container-xxl">
+				<div id="kt_content_container" 
+					data-kt-drawer-activate="true"
+					data-kt-drawer-toggle="#kt_drawer_optimus_btn"
+					data-kt-drawer-close="#kt_drawer_example_basic_close"
+					data-kt-drawer-width="1000px"
+					class="d-flex flex-column-fluid align-items-start container-xxl">
 					<!--begin::Post-->
 					<div class="content flex-row-fluid" id="kt_content">
 						<!--begin::Row-->
@@ -786,7 +791,7 @@
 	<!--end::Scrolltop-->
 	<!--end::Main-->
 	@include('partials.global-scripts')
-	<script src="assets/js/custom/apps/chat/chat.js"></script>
+	<script src="assets/js/custom/apps/chat/chat.js?v=0.0.123"></script>
 	<script src="https://js.stripe.com/v3/"></script>
 	<script>
 		const stripe = Stripe("{{ config('cashier.key') }}");
@@ -812,7 +817,7 @@
 			cardElement.unmount('#card-element');
 		})
 	</script>
-	<script src="assets/js/custom/modals/select-optimuspro-plan.js"></script>
+	<script src="assets/js/custom/modals/select-optimuspro-plan.js?v=0.0.123"></script>
 
 	<script>
 		// initial zoom
