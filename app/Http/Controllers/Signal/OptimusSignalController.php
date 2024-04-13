@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\TradeBlotter;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class OptimusSignalController extends Controller
 {
@@ -48,6 +49,10 @@ class OptimusSignalController extends Controller
         // \Illuminate\Support\Facades\Log::info('optimus_data: '.json_encode($optimus_data));
         // loop through JSON array
         foreach ($optimus_data as $data) {
+            //log 'strategy' if not empty
+            if (strlen($data->strategy) > 0) {
+                Log::info("Strategy: " . $data->strategy);
+            }
             // update OptimusData model
             \App\Models\OptimusSignal::where('asset', $data->asset)->update([
                 'range' => $data->range,
@@ -149,7 +154,7 @@ class OptimusSignalController extends Controller
         $optimus_data = json_decode($data);
         // news exists
         if (!$optimus_data) {
-            \Illuminate\Support\Facades\Log::error('No news data: \r\n'.$data. json_last_error());
+            \Illuminate\Support\Facades\Log::error('No news data: \r\n' . $data . json_last_error());
             return response()->json(['status' => false, 'message' => ''], 200);
         }
         //empty NewsData table
@@ -158,12 +163,12 @@ class OptimusSignalController extends Controller
         foreach ($optimus_data as $data) {
             // create new NewsData
             \App\Models\NewsData::create([
-                'time' => $data->t,//time
-                'pair' => "",//$data->p,//pair
-                'event' => $data->e,//event
-                'actual' => $data->a,//actual
-                'forecast' => $data->f,//forecast
-                'previous' => $data->p,//previous
+                'time' => $data->t, //time
+                'pair' => "", //$data->p,//pair
+                'event' => $data->e, //event
+                'actual' => $data->a, //actual
+                'forecast' => $data->f, //forecast
+                'previous' => $data->p, //previous
             ]);
         }
         return response()->json(['status' => true, 'message' => 'Y'], 200);
@@ -209,7 +214,7 @@ class OptimusSignalController extends Controller
             }
             $pl = doubleval($data->pl);
             // $data->pl = -1.00, 0.00, 1.00. Convert to double
-            $data->pl_clr = $pl < 0 ? 'red' : ($pl > 0 ? 'green' : 'black'); 
+            $data->pl_clr = $pl < 0 ? 'red' : ($pl > 0 ? 'green' : 'black');
             // convert string Sell(1) | Buy(1) to Sell x1 | Buy x1
             $data->size = str_replace(['(', ')'], [' x', ''], $data->size);
             // create new TradeBlotter
