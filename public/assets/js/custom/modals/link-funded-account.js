@@ -8,7 +8,7 @@ var KTModalNewAccount = function () {
 	var modalEl;
 
 	// Handle form validation and submittion
-	var handleForm = function() {
+	var handleForm = function () {
 
 		// Action buttons
 		submitButton.addEventListener('click', function (e) {
@@ -21,7 +21,7 @@ var KTModalNewAccount = function () {
 
 			// Disable button to avoid multiple click 
 			submitButton.disabled = true;
-			
+
 			// set name in form dynamically
 			var formData = new FormData(form);
 			// Send ajax request to form action
@@ -31,18 +31,20 @@ var KTModalNewAccount = function () {
 				data: formData,
 				processData: false,
 				contentType: false,
-			}).done(function(response) {
+			}).done(function (response) {
 				// Show popup confirmation
 				Swal.fire({
 					showConfirmButton: false,
 					showCancelButton: false,
-					text: "Account funded successfully!",
+					title: "Account funded successfully!",
+					text: "The new data will be visible after refreshing the page.",
 					icon: "success",
-				}).then(function() {
-					//Close modal
-					modal.hide();
-                });
-			}).fail(function(jqXHR, textStatus, errorThrown) {
+				});
+				//Close modal
+				modal.hide();
+				submitButton.removeAttribute('data-kt-indicator'); // remove loading indication
+				submitButton.disabled = false; // enable submit button
+			}).fail(function (jqXHR, textStatus, errorThrown) {
 				// Show popup error
 				Swal.fire({
 					text: jqXHR.responseJSON.error || "Sorry, looks like there are some errors detected, please try again.",

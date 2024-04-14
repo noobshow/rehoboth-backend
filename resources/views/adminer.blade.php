@@ -177,11 +177,30 @@
                                                                     data-email="{{$user->email}}" 
                                                                     data-bs-target="#kt_modal_view_account"
                                                                     class="menu-link px-3 view-account-modal" 
+                                                                    data-level="{{$user->fundedAccounts->where('active', true)->first()->level}}"
                                                                     data-login="{{$user->fundedAccounts->where('active', true)->first()->mt5_login}}"
                                                                     data-broker="{{$user->fundedAccounts->where('active', true)->first()->mt5_server}}" 
                                                                     data-amount="${{number_format($user->fundedAccounts->where('active', true)->first()->funded_amount)}}"
                                                                     data-password="{{$user->fundedAccounts->where('active', true)->first()->mt5_password}}">
                                                                     View Account
+                                                                </a>
+                                                            </div>
+                                                            <!--end::Menu item-->
+                                                            <!--begin::Menu item-->
+                                                            <div class="menu-item px-3">
+                                                                <a 
+                                                                    href="#" 
+                                                                    data-bs-toggle="modal" 
+                                                                    data-name="{{$user->name}}" 
+                                                                    data-email="{{$user->email}}" 
+                                                                    data-bs-target="#kt_modal_edit_account"
+                                                                    class="menu-link px-3 edit-account-modal" 
+                                                                    data-level="{{$user->fundedAccounts->where('active', true)->first()->level}}"
+                                                                    data-login="{{$user->fundedAccounts->where('active', true)->first()->mt5_login}}"
+                                                                    data-broker="{{$user->fundedAccounts->where('active', true)->first()->mt5_server}}" 
+                                                                    data-amount="${{number_format($user->fundedAccounts->where('active', true)->first()->funded_amount)}}"
+                                                                    data-password="{{$user->fundedAccounts->where('active', true)->first()->mt5_password}}">
+                                                                    Edit Account
                                                                 </a>
                                                             </div>
                                                             <!--end::Menu item-->
@@ -301,6 +320,20 @@
 							<!--end::Input wrapper-->
 						</div>
 						<!--end::Input group-->
+						<!--begin::Input group-->
+						<div class="d-flex flex-column mb-7 fv-row">
+							<!--begin::Label-->
+							<label class="required fs-6 fw-bold form-label mb-2">Account Level</label>
+							<!--end::Label-->
+							<!--begin::Input wrapper-->
+							<div class="position-relative">
+								<!--begin::Input-->
+								<input type="text" class="form-control form-control-solid" value="Phase 1" name="level" />
+								<!--end::Input-->
+							</div>
+							<!--end::Input wrapper-->
+						</div>
+						<!--end::Input group-->
 						<!--begin::Actions-->
 						<div class="text-center pt-15">
 							<button type="submit" id="kt_modal_new_account_submit" class="btn btn-primary">
@@ -320,6 +353,107 @@
 		<!--end::Modal dialog-->
 	</div>
 	<!--end::Modal - New Account-->
+	<!--begin::Modal - Edit Account-->
+	<div class="modal fade" id="kt_modal_edit_account" tabindex="-1" aria-hidden="true">
+		<!--begin::Modal dialog-->
+		<div class="modal-dialog modal-dialog-centered mw-650px">
+			<!--begin::Modal content-->
+			<div class="modal-content">
+				<!--begin::Modal header-->
+				<div class="modal-header">
+					<!--begin::Modal title-->
+					<h2>Edit Account</h2>
+					<!--end::Modal title-->
+					<!--begin::Close-->
+					<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+						<!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+						<span class="svg-icon svg-icon-1">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+								<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
+								<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
+							</svg>
+						</span>
+						<!--end::Svg Icon-->
+					</div>
+					<!--end::Close-->
+				</div>
+				<!--end::Modal header-->
+				<!--begin::Modal body-->
+				<div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+					<!--begin::Form-->
+					<form id="kt_modal_edit_account_form" class="form" method="POST" data-action="{{ route('update.funded.account') }}">
+                        <input id="modal-edit-account-email" type="hidden" name="user"/>
+						<!--begin::Input group-->
+						<div class="d-flex flex-column mb-7 fv-row">
+							<!--begin::Label-->
+							<label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+								<span class="required">Broker's Server</span>
+							</label>
+							<!--end::Label-->
+							<input type="text" id="modal-edit-account-broker" class="form-control form-control-solid" name="mt5_server" />
+						</div>
+						<!--end::Input group-->
+						<!--begin::Input group-->
+						<div class="d-flex flex-column mb-7 fv-row">
+							<!--begin::Label-->
+							<label class="required fs-6 fw-bold form-label mb-2">Account Login</label>
+							<!--end::Label-->
+							<!--begin::Input wrapper-->
+							<div class="position-relative">
+								<!--begin::Input-->
+								<input type="text" id="modal-edit-account-login" class="form-control form-control-solid" placeholder="Enter MT5 Login" name="mt5_login" />
+								<!--end::Input-->
+							</div>
+							<!--end::Input wrapper-->
+						</div>
+						<!--end::Input group-->
+						<!--begin::Input group-->
+						<div class="d-flex flex-column mb-7 fv-row">
+							<!--begin::Label-->
+							<label class="required fs-6 fw-bold form-label mb-2">Account Password</label>
+							<!--end::Label-->
+							<!--begin::Input wrapper-->
+							<div class="position-relative">
+								<!--begin::Input-->
+								<input type="password" id="modal-edit-account-password" class="form-control form-control-solid" placeholder="Enter MT5 Password" name="mt5_password" />
+								<!--end::Input-->
+							</div>
+							<!--end::Input wrapper-->
+						</div>
+						<!--end::Input group-->
+						<!--begin::Input group-->
+						<div class="d-flex flex-column mb-7 fv-row">
+							<!--begin::Label-->
+							<label class="required fs-6 fw-bold form-label mb-2">Account Level</label>
+							<!--end::Label-->
+							<!--begin::Input wrapper-->
+							<div class="position-relative">
+								<!--begin::Input-->
+								<input type="text" id="modal-edit-account-level" class="form-control form-control-solid" placeholder="Enter Level, e.g Phase 1, Funded" name="level" />
+								<!--end::Input-->
+							</div>
+							<!--end::Input wrapper-->
+						</div>
+						<!--end::Input group-->
+						<!--begin::Actions-->
+						<div class="text-center pt-15">
+							<button type="submit" id="kt_modal_edit_account_submit" class="btn btn-primary">
+								<span class="indicator-label">Submit</span>
+								<span class="indicator-progress">Please wait...
+									<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+							</button>
+						</div>
+						<!--end::Actions-->
+					</form>
+					<!--end::Form-->
+				</div>
+				<!--end::Modal body-->
+			</div>
+			<!--end::Modal content-->
+		</div>
+		<!--end::Modal dialog-->
+	</div>
+	<!--end::Modal - Edit Account-->
 	<!--begin::Modal - View Account-->
 	<div class="modal fade" id="kt_modal_view_account" tabindex="-1" aria-hidden="true">
 		<!--begin::Modal dialog-->
@@ -429,6 +563,16 @@
 									<!--end::Info Details-->
 								</div>
 								<!--end::Details-->
+								<!--begin::Details-->
+								<div class="mb-2">
+									<!--begin::info Title-->
+									<div class="fw-bold d-flex align-items-center">Level</div>
+									<!--end::info Title-->
+									<!--begin::Info Details-->
+									<div id="modal-account-level" class="fw-bold text-gray-600"></div>
+									<!--end::Info Details-->
+								</div>
+								<!--end::Details-->
 							</div>
 							<!--end::Section-->
 						</div>
@@ -459,10 +603,11 @@
     <!--end::Main-->
 	@include('partials.global-scripts')
     <!--begin::Page Vendors Javascript(used by this page)-->
-    <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+    <script src="assets/plugins/custom/datatables/datatables.bundle.js?v=0.0.2"></script>
     <!--end::Page Vendors Javascript-->
-    <script src="assets/js/custom/apps/users/list.js"></script>
-    <script src="assets/js/custom/modals/link-funded-account.js"></script>
+    <script src="assets/js/custom/apps/users/list.js?v=0.0.2"></script>
+    <script src="assets/js/custom/modals/link-funded-account.js?v=0.0.2"></script>
+    <script src="assets/js/custom/modals/edit-funded-account.js?v=0.0.2"></script>
     <script>
         $(document).ready(function() {
             $('.view-account-modal').click(function() {
@@ -473,23 +618,44 @@
                 var name = $(this).data('name');
                 var email = $(this).data('email');
                 var amount = $(this).data('amount');
+                var level = $(this).data('level');
                 
-                // console.log("login: " + login + " broker: " + broker + " password: " + password + " name: " + name + " email: " + email + " amount: " + amount);
-                // Update the modal content. Assuming you have an element with ID `modalInfo` in your modal where you want to show the data
+                // Update the modal content.
                 $('#modal-account-login').text(login);
                 $('#modal-account-broker').text(broker);
                 $('#modal-account-password').text(password);
                 $('#modal-account-name').text(name);
                 $('#modal-account-email').text(email);
                 $('#modal-account-amount').text(amount);
+                $('#modal-account-level').text(level);
             });
             //New account modal
             $('.new-account-modal').click(function() {
                 // Retrieve the data-info attribute value
                 var email = $(this).data('email');
 
-                // Update the modal content. Assuming you have an element with ID `modalInfo` in your modal where you want to show the data
+                // Update the modal content.
                 $('#modal-new-account-email').val(email);
+            });
+            //Edit account modal
+            $('.edit-account-modal').click(function() {
+                // Retrieve the data-info attribute value
+                var login = $(this).data('login');
+                var broker = $(this).data('broker');
+                var password = $(this).data('password');
+                var name = $(this).data('name');
+                var email = $(this).data('email');
+                var amount = $(this).data('amount');
+                var level = $(this).data('level');
+                
+                // Update the modal content.
+                $('#modal-edit-account-login').val(login);
+                $('#modal-edit-account-broker').val(broker);
+                $('#modal-edit-account-password').val(password);
+                // $('#modal-edit-account-name').val(name);
+                $('#modal-edit-account-email').val(email);
+                // $('#modal-edit-account-amount').val(amount);
+                $('#modal-edit-account-level').val(level);
             });
         });
     </script>
