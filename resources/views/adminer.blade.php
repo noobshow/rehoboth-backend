@@ -219,6 +219,13 @@
                                                         </div> -->
                                                         <!--end::Menu item-->
                                                     @endif
+													@if($user->role == "user")
+                                                    <!--begin::Menu item-->
+                                                    <div class="menu-item px-3">
+                                                        <a href="#" class="menu-link px-3 staffify-account" data-role="staff" data-name="{{ $user->name }}" data-email="{{ $user->email }}" data-action="{{ route('staffify'); }}">Staffify</a>
+                                                    </div>
+                                                    <!--end::Menu item-->
+													@endif
                                                     <!--begin::Menu item-->
                                                     <div class="menu-item px-3">
                                                         <a href="#" data-kt-subscriptions-table-filter="delete_row" class="menu-link px-3">Delete</a>
@@ -603,11 +610,12 @@
     <!--end::Main-->
 	@include('partials.global-scripts')
     <!--begin::Page Vendors Javascript(used by this page)-->
-    <script src="assets/plugins/custom/datatables/datatables.bundle.js?v=0.0.2"></script>
+    <script src="assets/plugins/custom/datatables/datatables.bundle.js?v=0.0.210"></script>
     <!--end::Page Vendors Javascript-->
-    <script src="assets/js/custom/apps/users/list.js?v=0.0.2"></script>
-    <script src="assets/js/custom/modals/link-funded-account.js?v=0.0.2"></script>
-    <script src="assets/js/custom/modals/edit-funded-account.js?v=0.0.2"></script>
+    <script src="assets/js/custom/apps/users/list.js?v=0.0.210"></script>
+    <script src="assets/js/custom/apps/users/assign-account-role.js?v=0.0.210"></script>
+    <script src="assets/js/custom/modals/link-funded-account.js?v=0.0.210"></script>
+    <script src="assets/js/custom/modals/edit-funded-account.js?v=0.0.210"></script>
     <script>
         $(document).ready(function() {
             $('.view-account-modal').click(function() {

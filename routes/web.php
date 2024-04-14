@@ -4,6 +4,7 @@ use App\Events\OptimusAlertUpdated;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\FundAccountController;
 use App\Http\Controllers\Signal\OptimusSignalController;
 use App\Http\Controllers\Payment\StripeController;
 use App\Models\CDLSignal;
@@ -203,99 +204,28 @@ Route::middleware('auth')->group(function () {
         abort(404, 'File not found');
     })->name('download');
 
+    /* Administration */
+
+    //Route that changes user's role into a staff or an admin
+    Route::post('/staffify', function (Request $request) {
+        $request->validate([
+            //admin or staff
+            'role' => 'required:in:admin,staff',
+            'user' => 'required:email',
+        ]);
+        $user = auth()->user();
+        if ($user instanceof App\Models\User && $user->role == 'admin') { // Check if $user is an instance of User model
+            $requestUser = \App\Models\User::where('email', $request->user)->first();
+            $requestUser->role = $request->role;
+            $requestUser->save();
+            return response()->json(['status' => true, 'message' => 'User role changed successfully']);
+        }
+    })->name('staffify');
+
     // TODO Manually Create Funded Account
-    Route::post('/activate-funded-account', function (Request $request) {
-        $request->validate([
-            'user' => 'required:email',
-            // 'funded_amount' => 'required',
-            'level' => 'required',
-            'mt5_login' => 'required',
-            'mt5_server' => 'required',
-            'mt5_password' => 'required',
-        ]);
+    Route::post('/activate-funded-account', [FundAccountController::class, 'store'])->name('activate.funded.account');
 
-        $user = auth()->user();
-        if ($user instanceof App\Models\User && $user->role == 'admin') {
-            $requestUser = App\Models\User::with("fundedAccounts")->where('email', $request->user)->first();
-            // Check if user exists
-            if (!$requestUser) {
-                return response()->json(['status' => false, 'message' => 'User not found'], 404);
-            }
-            $funded_accounts = $requestUser->fundedAccounts;
-
-            // Check if user is already funded
-            if ($funded_accounts && $funded_accounts->count() > 0) {
-                $inactiveFundedAccount = $funded_accounts->where('active', false/* , 'funded_amount', $request->funded_amount */)->first();
-                if ($inactiveFundedAccount) {
-                    // Activate inactive funded account
-                    $inactiveFundedAccount->update([
-                        'active' => true,
-                        'level' => $request->level,
-                        'mt5_login' => $request->mt5_login,
-                        'mt5_password' => $request->mt5_password,
-                        'mt5_server' => $request->mt5_server,
-                    ]);
-                    return response()->json(['status' => true, 'message' => 'Funded account activated'], 200);
-                }
-                return response()->json(['status' => false, 'message' => 'User already funded'], 400);
-            } else {
-                // Create forced-active funded account
-                // FundedAccount::create([
-                //     'active' => true,
-                //     'user_id' => $requestUser->id,
-                //     'mt5_login' => $request->login,
-                //     'mt5_password' => $request->password,
-                //     'mt5_server' => $request->broker,
-                //     'funded_amount' => $request->funded_amount,
-                //     // 'invoice_id' => $invoice->asStripeInvoice()->id
-                // ]);
-                return response()->json(['status' => false, 'message' => 'No inactive funded accounts'], 400);
-            }
-            return response()->json(['status' => true, 'message' => 'Funded account activated'], 200);
-        }
-        return response()->json(['status' => false, 'message' => 'Forbidden'], 403);
-        //http://localhost:8000/activate-funded-account?user=1&funded_amount=1000&login=123456&password=123456&broker=server
-    })->name('activate.funded.account');
-
-    Route::post('/update-funded-account', function (Request $request) {
-        $request->validate([
-            'user' => 'required:email',
-            // 'funded_amount' => 'required',
-            'level' => 'required',
-            'mt5_login' => 'required',
-            'mt5_server' => 'required',
-            'mt5_password' => 'required',
-        ]);
-
-        $user = auth()->user();
-        if ($user instanceof App\Models\User && $user->role == 'admin') {
-            $requestUser = App\Models\User::with("fundedAccounts")->where('email', $request->user)->first();
-            // Check if user exists
-            if (!$requestUser) {
-                return response()->json(['status' => false, 'message' => 'User not found'], 404);
-            }
-            $funded_accounts = $requestUser->fundedAccounts;
-
-            // Check if user is already funded
-            if ($funded_accounts && $funded_accounts->count() > 0) {
-                $activeFundedAccount = $funded_accounts->where('active', true)->first();
-                if ($activeFundedAccount) {
-                    // Activate inactive funded account
-                    $activeFundedAccount->update([
-                        'level' => $request->level,
-                        'mt5_login' => $request->mt5_login,
-                        'mt5_password' => $request->mt5_password,
-                        'mt5_server' => $request->mt5_server,
-                    ]);
-                    return response()->json(['status' => true, 'message' => 'Funded account updated'], 200);
-                }
-                return response()->json(['status' => false, 'message' => 'No actively funded account'], 400);
-            }
-            return response()->json(['status' => false, 'message' => 'No account found'], 400);
-        }
-        return response()->json(['status' => false, 'message' => 'Forbidden'], 403);
-        //http://localhost:8000/activate-funded-account?user=1&funded_amount=1000&login=123456&password=123456&broker=server
-    })->name('update.funded.account');
+    Route::post('/update-funded-account', [FundAccountController::class, 'update'])->name('update.funded.account');
 
     Route::get('administraight', function () {
         $user = auth()->user();
@@ -326,11 +256,13 @@ Route::middleware('auth')->group(function () {
      */
     Route::get("/adminer-mail", function (Request $request) {
         $user = auth()->user();
-        if ($user instanceof App\Models\User && $user->role == 'admin') { // Check if $user is an instance of User model
+        if ($user instanceof App\Models\User && ($user->role == 'admin' || $user->role == 'staff')) { // Check if $user is an instance of User model
             return Redirect::away("https://webmail.rehobothtraders.com");
         }
         return Redirect::away("https://rehobothtraders.com");
     })->name("adminer-mail");
+
+    /* Administration */
 });
 
 /**

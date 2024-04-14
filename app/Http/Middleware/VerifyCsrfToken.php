@@ -19,6 +19,7 @@ class VerifyCsrfToken extends Middleware
         'post-reset-password',
         'activate-funded-account',
         'update-funded-account',
+        '/staffify',
         /* chats */
         'send-chat-message',
         // stripe-charges
