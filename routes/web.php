@@ -206,7 +206,6 @@ Route::middleware('auth')->group(function () {
 
     /* Administration */
 
-    //Route that changes user's role into a staff or an admin
     Route::post('/staffify', function (Request $request) {
         $request->validate([
             //admin or staff
@@ -221,6 +220,19 @@ Route::middleware('auth')->group(function () {
             return response()->json(['status' => true, 'message' => 'User role changed successfully']);
         }
     })->name('staffify');
+
+    Route::post('/unstaffify', function (Request $request) {
+        $request->validate([
+            'user' => 'required:email',
+        ]);
+        $user = auth()->user();
+        if ($user instanceof App\Models\User && $user->role == 'admin') { // Check if $user is an instance of User model
+            $requestUser = \App\Models\User::where('email', $request->user)->first();
+            $requestUser->role = "user";
+            $requestUser->save();
+            return response()->json(['status' => true, 'message' => 'User role changed successfully']);
+        }
+    })->name('unstaffify');
 
     // TODO Manually Create Funded Account
     Route::post('/activate-funded-account', [FundAccountController::class, 'store'])->name('activate.funded.account');

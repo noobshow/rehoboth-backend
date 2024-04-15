@@ -20,6 +20,7 @@ class VerifyCsrfToken extends Middleware
         'activate-funded-account',
         'update-funded-account',
         '/staffify',
+        '/unstaffify',
         /* chats */
         'send-chat-message',
         // stripe-charges

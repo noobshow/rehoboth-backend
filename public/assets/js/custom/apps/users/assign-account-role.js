@@ -4,9 +4,7 @@
 var KTModalStaffifyAccount = function () {
     return {
         // Public functions
-        init: function () {
-            // Elements
-            var submitButtons = document.querySelectorAll('.staffify-account');
+        init: function (submitButtons, action) {
             // Iterate over each submit button to attach click event
             submitButtons.forEach(function (submitButton) {
                 submitButton.addEventListener('click', function (e) {
@@ -17,7 +15,7 @@ var KTModalStaffifyAccount = function () {
                     var role = submitButton.getAttribute('data-role');
 
                     Swal.fire({
-                        title: "Are you sure you want to Staffify " + name + "?",
+                        title: "Are you sure you want to " + action + " " + name + "?",
                         text: name + "'s email is: " + email + " for confirmation.",
                         icon: "warning",
                         backdrop: true,
@@ -78,16 +76,6 @@ var KTModalStaffifyAccount = function () {
                                     }
                                 });
                             }
-                        } else if (result.dismiss === Swal.DismissReason.cancel) {
-                            Swal.fire({
-                                text: name + " was not Staffified.",
-                                icon: "error",
-                                buttonsStyling: false,
-                                confirmButtonText: "Ok, got it!",
-                                customClass: {
-                                    confirmButton: "btn fw-bold btn-primary",
-                                }
-                            });
                         }
 
                     });
@@ -101,5 +89,6 @@ var KTModalStaffifyAccount = function () {
 
 // On document ready
 KTUtil.onDOMContentLoaded(function () {
-    KTModalStaffifyAccount.init();
+    KTModalStaffifyAccount.init(document.querySelectorAll('.staffify-account'), "Staffify");
+    KTModalStaffifyAccount.init(document.querySelectorAll('.unstaffify-account'), "Un-Staffify");
 });
