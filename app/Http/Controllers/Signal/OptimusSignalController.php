@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\TradeBlotter;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Log;
 
 class OptimusSignalController extends Controller
 {
@@ -46,10 +45,6 @@ class OptimusSignalController extends Controller
         // \Illuminate\Support\Facades\Log::info('optimus_data: '.json_encode($optimus_data));
         // loop through JSON array
         foreach ($optimus_data as $data) {
-            //log 'strategy' if not empty
-            if (strlen($data->strategy) > 0) {
-                Log::info("Strategy: " . $data->strategy);
-            }
             // update OptimusData model
             \App\Models\OptimusSignal::where('asset', $data->asset)->update([
                 'range' => $data->range,
