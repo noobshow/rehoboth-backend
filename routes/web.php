@@ -293,16 +293,6 @@ Route::post('/update-news-data', [OptimusSignalController::class, 'pushOptimusPr
 Route::post('/update-cdl-data', [OptimusSignalController::class, 'pushOptimusProCDLSignals']);
 Route::post('/update-optimus-pro-data', [OptimusSignalController::class, 'pushOptimusProSignals']);
 Route::post('/update-total-pips', [OptimusSignalController::class, 'pushOptimusProTotalPips']);
-
-Route::post('/update-alert', function (Request $request) {
-    $request->validate([
-        'alert' => 'required',
-    ]);
-    $alert = $request->alert;
-    Cache::put("optimus-mover-alert", $alert, now()->addMinutes(2));
-    // trigger event
-    event(new OptimusAlertUpdated($alert));
-    return response()->json(['status' => true], 200);
-})->name('add.alert');
+Route::post('/update-alert', [OptimusSignalController::class, 'pushOptimusProAlerts'])->name('add.alert');
 
 require __DIR__ . '/auth.php';

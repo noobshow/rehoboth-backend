@@ -95,18 +95,27 @@ class FundAccountController extends Controller
         if (!$funded_accounts || $funded_accounts->count() == 0) {
             return response()->json(['status' => false, 'message' => 'No inactive funded accounts'], 400);
         }
-        $inactiveAccount = $funded_accounts->where('active', false/* , 'funded_amount', $request->funded_amount */)->first();
-        if (!$inactiveAccount) {
+        $account = $funded_accounts->where('active', false/* , 'funded_amount', $request->funded_amount */)->first();
+        if (!$account) {
             return response()->json(['status' => false, 'message' => 'User already funded'], 400);
         }
         // Activate inactive funded account
-        $inactiveAccount->update([
+        $account->update([
             'active' => true,
             'level' => $request->level,
             'mt5_login' => $request->mt5_login,
             'mt5_password' => $request->mt5_password,
             'mt5_server' => $request->mt5_server,
         ]);
+
+        // Send notification to user
+        $requestUser->notify(new \App\Notifications\YouGotFunded(
+            $account->amount,
+            $request->level,
+            $request->mt5_login,
+            $request->mt5_password,
+            $request->mt5_server
+        ));
         return response()->json(['status' => true, 'message' => 'Account Funded and activated'], 200);
     }
 
@@ -163,6 +172,16 @@ class FundAccountController extends Controller
             'mt5_password' => $request->mt5_password,
             'mt5_server' => $request->mt5_server,
         ]);
+
+        // Send notification to user
+        $requestUser->notify(new \App\Notifications\TradingAccountUpdated(
+            $account->amount,
+            $request->level,
+            $request->mt5_login,
+            $request->mt5_password,
+            $request->mt5_server
+        ));
+
         return response()->json(['status' => true, 'message' => 'Funded account updated'], 200);
     }
 

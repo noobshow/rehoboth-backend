@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers\Signal;
 
-use App\Events\CDLSignalUpdated;
-use App\Events\NewsDataUpdated;
-use App\Events\OptimusSignalUpdated;
-use App\Events\TradeBlotterUpdated;
+use App\Events\OptimusAlertUpdated;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\TradeBlotter;
@@ -260,6 +257,29 @@ class OptimusSignalController extends Controller
         // Storing the value
         Cache::forever('total_pips', $total_pips);
         return response()->json(['status' => true, 'message' => 'Y'], 200);
+    }
+
+    /**
+     * Push Optimus Pro Alert
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JSONResponse
+     */
+    public function pushOptimusProAlerts(Request $request)
+    {
+        $request->validate([
+            'token' => 'required',
+            'alert' => 'required',
+        ]);
+        $token = $request->token;
+        if ($token !== config('product.optimus_pro_token')) {
+            return response()->json(['status' => false], 404);
+        }
+        $alert = $request->alert;
+        Cache::put("optimus-mover-alert", $alert, now()->addMinutes(2));
+        // trigger event
+        event(new OptimusAlertUpdated($alert));
+        return response()->json(['status' => true], 200);
     }
 
     /**
