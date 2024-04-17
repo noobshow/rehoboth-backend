@@ -432,7 +432,7 @@
 											</div>
 											<!--begin::Features-->
 											<div class="d-flex align-items-center mb-7">
-												<span class="fw-bold fs-5 text-muted flex-grow-1">Major Banks Positions</span>
+												<span class="fw-bold fs-5 text-muted flex-grow-1">Investor's Bias</span>
 												<!--begin::Svg Icon | path: icons/duotune/general/gen040.svg-->
 												<span class="svg-icon svg-icon-1">
 													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -527,7 +527,7 @@
 											</div>
 											<!--begin::Features-->
 											<div class="d-flex align-items-center mb-7">
-												<span class="fw-bold fs-5 text-muted flex-grow-1">Major Banks Positions</span>
+												<span class="fw-bold fs-5 text-muted flex-grow-1">Investor's Bias</span>
 												<!--begin::Svg Icon | path: icons/duotune/general/gen040.svg-->
 												<span class="svg-icon svg-icon-1">
 													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -622,7 +622,7 @@
 											</div>
 											<!--begin::Features-->
 											<div class="d-flex align-items-center mb-7">
-												<span class="fw-bold fs-5 text-gray-700 flex-grow-1">Major Banks Positions</span>
+												<span class="fw-bold fs-5 text-gray-700 flex-grow-1">Investor's Bias</span>
 												<!--begin::Svg Icon | path: icons/duotune/general/gen043.svg-->
 												<span class="svg-icon svg-icon-1 svg-icon-success">
 													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
