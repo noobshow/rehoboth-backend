@@ -168,7 +168,7 @@
 															</button>
 														</td>
 														<td>
-															<button id="optimus_pro_signal_{{ strtolower($assetData->asset) }}_strategy" class="btn mb-1 w-100 btn-sm fw-bolder {{ $assetData->strategy == 'Buy' ? 'btn-primary' : 'btn-danger' }} {{ !empty($assetData->strategy) ? 'd-block' : 'd-none' }}">
+															<button id="optimus_pro_signal_{{ strtolower($assetData->asset) }}_strategy" class="btn mb-1 w-100 btn-sm fw-bolder {{ $assetData->strategy == '+VE' ? 'btn-primary' : 'btn-info' }} {{ !empty($assetData->strategy) ? 'd-block' : 'd-none' }}">
 																{{ $assetData->strategy }}
 															</button>
 														</td>
