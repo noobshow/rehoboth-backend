@@ -180,7 +180,7 @@ Route::middleware('auth')->group(function () {
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::post('/send-chat-message', [ChatController::class, 'sendMessage']);
+    Route::post('/send-chat-message', [ChatController::class, 'sendMessage'])->name('send-chat-message');
 
     // Payment routes
     Route::post('/stripe-charge', [StripeController::class, 'handlePayment'])->name('stripe.charge');
