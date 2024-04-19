@@ -38,7 +38,7 @@ class OnMessage implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('chat')
+            new PrivateChannel('optimus-pro')
         ];
     }
 }

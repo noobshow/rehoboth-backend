@@ -46,7 +46,7 @@ class TradeBlotterUpdated implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('optimus-pro.signals'),
+            new PrivateChannel('optimus-pro'),
         ];
     }
 }

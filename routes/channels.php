@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Log;
 //     return (int) $user->id === (int) $id;
 // });
 
-Broadcast::channel('optimus-pro.signals', function ($user) {
+Broadcast::channel('optimus-pro', function ($user) {
     if ($user instanceof App\Models\User) { // Check if $user is an instance of User model
         // get important data
         $funded_accounts = $user->fundedAccounts;
