@@ -175,7 +175,7 @@ class FundAccountController extends Controller
 
         // Send notification to user
         $requestUser->notify(new \App\Notifications\TradingAccountUpdated(
-            $account->amount,
+            $account->funded_amount,
             $request->level,
             $request->mt5_login,
             $request->mt5_password,
